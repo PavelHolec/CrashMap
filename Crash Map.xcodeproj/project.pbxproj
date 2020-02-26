@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		E9FB3D9D2406B04400569BDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB3D9C2406B04400569BDB /* AppDelegate.swift */; };
 		E9FB3D9F2406B04400569BDB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB3D9E2406B04400569BDB /* SceneDelegate.swift */; };
-		E9FB3DA12406B04400569BDB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB3DA02406B04400569BDB /* ViewController.swift */; };
 		E9FB3DA42406B04400569BDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FB3DA22406B04400569BDB /* Main.storyboard */; };
 		E9FB3DA62406B04800569BDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9FB3DA52406B04800569BDB /* Assets.xcassets */; };
 		E9FB3DA92406B04800569BDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FB3DA72406B04800569BDB /* LaunchScreen.storyboard */; };
 		E9FB3DB42406B04800569BDB /* Crash_MapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB3DB32406B04800569BDB /* Crash_MapUITests.swift */; };
+		E9FB3DBF2406B19F00569BDB /* MeteoriteListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB3DBE2406B19F00569BDB /* MeteoriteListTableViewController.swift */; };
+		E9FB3DC22406C27E00569BDB /* MeteoriteListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB3DC12406C27E00569BDB /* MeteoriteListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +31,6 @@
 		E9FB3D992406B04400569BDB /* Crash Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crash Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FB3D9C2406B04400569BDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9FB3D9E2406B04400569BDB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E9FB3DA02406B04400569BDB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E9FB3DA32406B04400569BDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9FB3DA52406B04800569BDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9FB3DA82406B04800569BDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +38,8 @@
 		E9FB3DAF2406B04800569BDB /* Crash MapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Crash MapUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FB3DB32406B04800569BDB /* Crash_MapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crash_MapUITests.swift; sourceTree = "<group>"; };
 		E9FB3DB52406B04800569BDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9FB3DBE2406B19F00569BDB /* MeteoriteListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteListTableViewController.swift; sourceTree = "<group>"; };
+		E9FB3DC12406C27E00569BDB /* MeteoriteListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,12 +81,10 @@
 		E9FB3D9B2406B04400569BDB /* Crash Map */ = {
 			isa = PBXGroup;
 			children = (
+				E9FB3DC02406C23A00569BDB /* Views */,
 				E9FB3D9C2406B04400569BDB /* AppDelegate.swift */,
 				E9FB3D9E2406B04400569BDB /* SceneDelegate.swift */,
-				E9FB3DA02406B04400569BDB /* ViewController.swift */,
-				E9FB3DA22406B04400569BDB /* Main.storyboard */,
 				E9FB3DA52406B04800569BDB /* Assets.xcassets */,
-				E9FB3DA72406B04800569BDB /* LaunchScreen.storyboard */,
 				E9FB3DAA2406B04800569BDB /* Info.plist */,
 			);
 			path = "Crash Map";
@@ -97,6 +97,17 @@
 				E9FB3DB52406B04800569BDB /* Info.plist */,
 			);
 			path = "Crash MapUITests";
+			sourceTree = "<group>";
+		};
+		E9FB3DC02406C23A00569BDB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E9FB3DA72406B04800569BDB /* LaunchScreen.storyboard */,
+				E9FB3DA22406B04400569BDB /* Main.storyboard */,
+				E9FB3DBE2406B19F00569BDB /* MeteoriteListTableViewController.swift */,
+				E9FB3DC12406C27E00569BDB /* MeteoriteListTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,9 +211,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9FB3DA12406B04400569BDB /* ViewController.swift in Sources */,
+				E9FB3DC22406C27E00569BDB /* MeteoriteListTableViewCell.swift in Sources */,
 				E9FB3D9D2406B04400569BDB /* AppDelegate.swift in Sources */,
 				E9FB3D9F2406B04400569BDB /* SceneDelegate.swift in Sources */,
+				E9FB3DBF2406B19F00569BDB /* MeteoriteListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +306,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -348,7 +360,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -365,6 +377,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KUK78BSTW9;
 				INFOPLIST_FILE = "Crash Map/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -383,6 +396,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KUK78BSTW9;
 				INFOPLIST_FILE = "Crash Map/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
