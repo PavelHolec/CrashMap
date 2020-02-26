@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t37-Zn-fRx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -49,7 +48,6 @@
                                                         </label>
                                                         <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="zFc-Oe-Oic" userLabel="Spacer View">
                                                             <rect key="frame" x="0.0" y="52" width="309.5" height="16"/>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="SFa-WT-eJp"/>
                                                             </constraints>
@@ -72,7 +70,6 @@
                                                         </label>
                                                         <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="msy-h2-WS7">
                                                             <rect key="frame" x="0.0" y="18" width="80.5" height="46"/>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="107,000g" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDe-BN-KSq">
                                                             <rect key="frame" x="0.0" y="64" width="80.5" height="18"/>
@@ -97,7 +94,7 @@
                                     <outlet property="idLabel" destination="AZR-eI-Kzl" id="OrS-0D-zcW"/>
                                     <outlet property="nameLabel" destination="4Cy-kV-NjX" id="sqQ-Wj-g9G"/>
                                     <outlet property="yearLabel" destination="uX4-2K-oTE" id="eCG-Lc-4qc"/>
-                                    <segue destination="Msm-CA-7VT" kind="show" id="29w-dh-BhR"/>
+                                    <segue destination="Msm-CA-7VT" kind="show" destinationCreationSelector="makeMeteoriteDetailViewControllerWithCoder:" id="29w-dh-BhR"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -115,8 +112,8 @@
         <!--Meteorite Name-->
         <scene sceneID="F3n-t5-ugX">
             <objects>
-                <viewController id="Msm-CA-7VT" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="trx-92-bYY">
+                <viewController id="Msm-CA-7VT" customClass="MeteoriteDetailViewController" customModule="Crash_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="trx-92-bYY" customClass="MeteoriteDet">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -134,6 +131,9 @@
                         <viewLayoutGuide key="safeArea" id="36W-Up-v7s"/>
                     </view>
                     <navigationItem key="navigationItem" title="Meteorite Name" id="gtZ-yw-L4F"/>
+                    <connections>
+                        <outlet property="mapView" destination="1Bm-hC-ZoH" id="Av4-2o-0jq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Jj-92-b3W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
