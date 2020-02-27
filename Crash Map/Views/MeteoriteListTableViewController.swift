@@ -5,12 +5,25 @@ class MeteoriteListTableViewController: UITableViewController {
     
     let meteoriteService = MeteoriteService()
     
+    var meteorites: [Meteorite] = []
     var filteredMeteorites: [Meteorite] = []
     
     // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
         addSearchController()
+        
+        meteoriteService.performRequest() { result in
+            switch result {
+            case .failure:
+                break
+            case .success(let meteorites):
+                self.meteorites = meteorites
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
     
     // MARK: - TableView
@@ -19,24 +32,20 @@ class MeteoriteListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        isFiltering ? filteredMeteorites.count : meteoriteService.meteorites.count
+        isFiltering ? filteredMeteorites.count : meteorites.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let meteoriteCell = tableView.dequeueReusableCell(withIdentifier: "Meteorite Cell") as! MeteoriteListTableViewCell
-        let meteorite = isFiltering ? filteredMeteorites[indexPath.row] : meteoriteService.meteorites[indexPath.row]
+        let meteorite = isFiltering ? filteredMeteorites[indexPath.row] : meteorites[indexPath.row]
         meteoriteCell.configure(meteorite: meteorite)
         return meteoriteCell
     }
     
     @IBSegueAction
     func makeMeteoriteDetailViewController(coder: NSCoder) -> UIViewController? {
-        let selectedMeteorite = meteoriteService.getMeteorite(index: tableView!.indexPathForSelectedRow!.row)
+        let selectedMeteorite = meteorites[tableView.indexPathForSelectedRow!.row]
         return MeteoriteDetailViewController(coder: coder, meteorite: selectedMeteorite)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
     }
     
     // MARK: - Private
@@ -47,6 +56,7 @@ class MeteoriteListTableViewController: UITableViewController {
         searchController.searchBar.placeholder = "Search for Meteorite..."
         
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
 }
 
@@ -65,6 +75,8 @@ extension MeteoriteListTableViewController: UISearchResultsUpdating {
         guard let searchTerm = searchController.searchBar.text else {
             return
         }
+        
+        filteredMeteorites = meteorites.filter({ $0.name.contains(searchTerm)})
         
         tableView.reloadData()
     }

@@ -10,6 +10,7 @@
 		E99719972406D227005195B7 /* MeteoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99719962406D227005195B7 /* MeteoriteService.swift */; };
 		E99719992406D4E1005195B7 /* MeteoriteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99719982406D4E1005195B7 /* MeteoriteDetailViewController.swift */; };
 		E997199B2406D7FF005195B7 /* Meteorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E997199A2406D7FF005195B7 /* Meteorite.swift */; };
+		E997199D2406EFA2005195B7 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E997199C2406EFA2005195B7 /* Keys.plist */; };
 		E9FB3D9D2406B04400569BDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB3D9C2406B04400569BDB /* AppDelegate.swift */; };
 		E9FB3D9F2406B04400569BDB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB3D9E2406B04400569BDB /* SceneDelegate.swift */; };
 		E9FB3DA42406B04400569BDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FB3DA22406B04400569BDB /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 		E99719962406D227005195B7 /* MeteoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteService.swift; sourceTree = "<group>"; };
 		E99719982406D4E1005195B7 /* MeteoriteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteoriteDetailViewController.swift; sourceTree = "<group>"; };
 		E997199A2406D7FF005195B7 /* Meteorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meteorite.swift; sourceTree = "<group>"; };
+		E997199C2406EFA2005195B7 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		E9FB3D992406B04400569BDB /* Crash Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crash Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FB3D9C2406B04400569BDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9FB3D9E2406B04400569BDB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				E9FB3D9E2406B04400569BDB /* SceneDelegate.swift */,
 				E9FB3DA52406B04800569BDB /* Assets.xcassets */,
 				E9FB3DAA2406B04800569BDB /* Info.plist */,
+				E997199C2406EFA2005195B7 /* Keys.plist */,
 			);
 			path = "Crash Map";
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9FB3DA92406B04800569BDB /* LaunchScreen.storyboard in Resources */,
+				E997199D2406EFA2005195B7 /* Keys.plist in Resources */,
 				E9FB3DA62406B04800569BDB /* Assets.xcassets in Resources */,
 				E9FB3DA42406B04400569BDB /* Main.storyboard in Resources */,
 			);
