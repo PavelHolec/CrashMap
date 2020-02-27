@@ -9,8 +9,12 @@ class MeteoriteListTableViewCell: UITableViewCell {
     
     func configure(meteorite: Meteorite) {
         nameLabel.text = meteorite.name
-        yearLabel.text = meteorite.year
-        foundLabel.text = meteorite.fall
+        yearLabel.text = meteorite.yearTitle
+        foundLabel.text = meteorite.fallTitle
         idLabel.text = meteorite.id
+        
+        if meteorite.coordinates == nil {
+            selectionStyle = .none
+        }
     }
 }

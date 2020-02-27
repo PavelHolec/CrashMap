@@ -1,11 +1,53 @@
 import Foundation
 
+enum MeteoriteServiceError: Error {
+    case invalidResponse
+}
+
 struct MeteoriteService {
+    let baseUrl = "https://data.nasa.gov/resource/gh4g-9sfh.json"
+    let decoder = JSONDecoder()
+    let appToken: String
+    
+    init() {
+        guard let keysPath = Bundle.main.path(forResource: "Keys", ofType: "plist"),
+            let appTokenValue = NSDictionary(contentsOfFile: keysPath)?.value(forKey: "NasaAppToken") as? String
+        else {
+            fatalError("AppKey is missing")
+        }
+        
+        appToken = appTokenValue
+    }
+    
+    func performRequest(completion: @escaping (Result<[Meteorite], MeteoriteServiceError>) -> Void) {
+        guard let url = URL(string: baseUrl + "?$limit=20") else {
+            fatalError("Malformed URL")
+        }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.addValue(appToken, forHTTPHeaderField: "X-App-Token")
+        
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: urlRequest) { data, response, error in
+            guard error == nil, let data = data else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+            
+            guard let meteoritesJson = try? self.decoder.decode([Meteorite.Json].self, from: data) else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+            
+            let meteorites = meteoritesJson.compactMap { Meteorite(fromJson: $0) }
+            completion(.success(meteorites))
+        }
+        
+        task.resume()
+    }
     
     var meteorites: [Meteorite] {
-        [Meteorite(id: "1", name: "Meteorite", year: "1999", type: "x", fall: "Fall", mass: 3.34, location: (50.2, 49.1)),
-         Meteorite(id: "2", name: "Meteorite 2", year: "1999", type: "x", fall: "Fall", mass: 0.24, location: (40.2, 51.1)),
-         Meteorite(id: "3", name: "Meteorite 3", year: "1989", type: "x", fall: "Fall", mass: 100.34, location: (51.2, 49.1))]
+        return []
     }
     
     func getMeteorite(index: Int) -> Meteorite {
