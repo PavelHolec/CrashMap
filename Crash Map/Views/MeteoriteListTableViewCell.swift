@@ -42,8 +42,8 @@ class MeteoriteListTableViewCell: UITableViewCell {
         classLabel.text = meteorite.class
         
         if meteorite.massInGrams > 0 {
-            let scale = 0.1 + CGFloat(20 * meteorite.massInGrams / 1_000_000)
-            meteoriteImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+            let scale = 0.25 + CGFloat(20 * meteorite.massInGrams / 1_000_000)
+            meteoriteImageView.transform = CGAffineTransform(scaleX: scale, y: scale).rotated(by: -0.2)
             meteoriteImageView.isHidden = false
             //gradientView.middleLocation = CGFloat(0.75 - meteorite.massInGrams / 1_0_000.0)
         } else {
