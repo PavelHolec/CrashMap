@@ -20,9 +20,11 @@ struct MeteoriteService {
     }
     
     func performRequest(completion: @escaping (Result<[Meteorite], MeteoriteServiceError>) -> Void) {
-        guard let url = URL(string: baseUrl + "?$limit=20") else {
+        guard let url = URL(string: baseUrl + "?$limit=30&year='2011-01-01T00:00:00'") else {
             fatalError("Malformed URL")
         }
+        
+        //.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         
         var urlRequest = URLRequest(url: url)
         urlRequest.addValue(appToken, forHTTPHeaderField: "X-App-Token")
@@ -39,7 +41,10 @@ struct MeteoriteService {
                 return
             }
             
-            let meteorites = meteoritesJson.compactMap { Meteorite(fromJson: $0) }
+            let meteorites = meteoritesJson
+                .compactMap { Meteorite(fromJson: $0) }
+                .sorted(by: { $0.massInGrams > $1.massInGrams })
+            
             completion(.success(meteorites))
         }
         
