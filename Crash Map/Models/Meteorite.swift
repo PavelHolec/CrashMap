@@ -13,7 +13,7 @@ struct Meteorite {
     let id: String
     let type: String
     let `class`: String
-    let massInGrams: Int?
+    let massInGrams: Double
     let fall: Fall
     let year: Int?
     let coordinates: Coordinates?
@@ -31,6 +31,10 @@ struct Meteorite {
     }
     
     // MARK: VM
+    var idTitle: String {
+        "ID \(id)"
+    }
+    
     var yearTitle: String {
         year == nil ? "" : String(year!)
     }
@@ -43,6 +47,21 @@ struct Meteorite {
             return "Found"
         }
     }
+    
+    var massTitle: String {
+        guard massInGrams > 0 else {
+            return ""
+        }
+        
+        switch massInGrams {
+        case ..<1:
+            return "\((massInGrams * 1000).rounded) mg"
+        case 1000...:
+            return "\((massInGrams / 1000).rounded) kg"
+        default:
+            return "\((massInGrams).rounded) g"
+        }
+    }
 }
 
 extension Meteorite {
@@ -51,7 +70,7 @@ extension Meteorite {
         id = json.id
         type = json.nametype
         `class` = json.recclass
-        massInGrams = json.mass == nil ? nil : Int(json.mass!)
+        massInGrams = json.mass == nil ? 0 : Double(json.mass!) ?? 0
         fall = json.fall
         year = Int(String(json.year.prefix(4)))
         
