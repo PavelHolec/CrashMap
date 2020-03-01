@@ -4,10 +4,21 @@ import UIKit
 class MeteoriteListTableViewController: UITableViewController {
     
     private var meteoriteService: MeteoriteService!
-    private var filterSinceYear: Int!
     
+    private(set) var filterSinceYear: Int!
     private(set) var allMeteorites: [Meteorite] = []
-    private var filteredMeteorites: [Meteorite] = []
+    private(set) var filteredMeteorites: [Meteorite] = []
+    
+    var isFiltering: Bool {
+        navigationItem.searchController!.isActive && !isSearchBarEmpty
+    }
+    
+    var meteorites: [Meteorite] {
+        isFiltering ? filteredMeteorites : allMeteorites
+    }
+    
+    // MARK: - IBOutlets
+    @IBOutlet private var emptyTableView: UIView!
     
     // MARK: - Configuration
     func configure(meteoriteService: MeteoriteService, filterSinceYear: Int) {
@@ -20,22 +31,12 @@ class MeteoriteListTableViewController: UITableViewController {
         super.viewDidLoad()
         addSearchController()
         setBaseFilter(toYear: filterSinceYear)
+        enablePullToResfresh()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        meteoriteService.getMeteorites(sinceYear: filterSinceYear) { result in
-            switch result {
-            case .failure:
-                break
-            case .success(let meteorites):
-                self.allMeteorites = meteorites
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
-        }
+        reloadData()
     }
     
     // MARK: - TableView
@@ -44,12 +45,16 @@ class MeteoriteListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        isFiltering ? filteredMeteorites.count : allMeteorites.count
+        meteorites.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let meteoriteCell = tableView.dequeueReusableCell(withIdentifier: "Meteorite Cell") as! MeteoriteListTableViewCell
-        let meteorite = isFiltering ? filteredMeteorites[indexPath.row] : allMeteorites[indexPath.row]
+        
+        guard let meteorite = meteorites[safe: indexPath.row] else {
+            return meteoriteCell
+        }
+        
         meteoriteCell.configure(meteorite: meteorite)
         return meteoriteCell
     }
@@ -73,16 +78,50 @@ class MeteoriteListTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return meteorites.count > 0 ? nil : emptyTableView
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return meteorites.count > 0 ? 0 : tableView.bounds.height * 0.6
+    }
+    
     // MARK: - Segues
     @IBSegueAction
     func makeMeteoriteDetailViewController(coder: NSCoder) -> UIViewController? {
-        let selectedMeteorite = allMeteorites[tableView.indexPathForSelectedRow!.row]
+        let selectedMeteorite = meteorites[tableView.indexPathForSelectedRow!.row]
         return MeteoriteDetailViewController(coder: coder, meteorite: selectedMeteorite)
     }
     
     // MARK: - Filtering
     func setFilteredMeteoritesTo(_ filteredMeteorites: [Meteorite]) {
         self.filteredMeteorites = filteredMeteorites
+    }
+    
+    // MARK: - Private
+    private func enablePullToResfresh() {
+        refreshControl!.addTarget(self, action: #selector(reloadData), for: .valueChanged)
+    }
+    
+    @objc private func reloadData() {
+        meteoriteService.getMeteorites(sinceYear: filterSinceYear) { result in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                switch result {
+                case .failure:
+                    self.allMeteorites = []
+                case .success(let meteorites):
+                    self.allMeteorites = meteorites
+                }
+                
+                self.filteredMeteorites = []
+                self.refreshControl!.endRefreshing()
+                self.tableView.reloadData()
+            }
+        }
     }
 }
 
