@@ -3,22 +3,34 @@ import UIKit
 
 class MeteoriteListTableViewController: UITableViewController {
     
-    let meteoriteService = MeteoriteService()
+    private var meteoriteService: MeteoriteService!
+    private var filterSinceYear: Int!
     
-    var meteorites: [Meteorite] = []
-    var filteredMeteorites: [Meteorite] = []
+    private(set) var allMeteorites: [Meteorite] = []
+    private var filteredMeteorites: [Meteorite] = []
+    
+    // MARK: - Configuration
+    func configure(meteoriteService: MeteoriteService, filterSinceYear: Int) {
+        self.meteoriteService = meteoriteService
+        self.filterSinceYear = filterSinceYear
+    }
     
     // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
         addSearchController()
+        setBaseFilter(toYear: filterSinceYear)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        meteoriteService.performRequest() { result in
+        meteoriteService.getMeteorites(sinceYear: filterSinceYear) { result in
             switch result {
             case .failure:
                 break
             case .success(let meteorites):
-                self.meteorites = meteorites
+                self.allMeteorites = meteorites
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -32,12 +44,12 @@ class MeteoriteListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        isFiltering ? filteredMeteorites.count : meteorites.count
+        isFiltering ? filteredMeteorites.count : allMeteorites.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let meteoriteCell = tableView.dequeueReusableCell(withIdentifier: "Meteorite Cell") as! MeteoriteListTableViewCell
-        let meteorite = isFiltering ? filteredMeteorites[indexPath.row] : meteorites[indexPath.row]
+        let meteorite = isFiltering ? filteredMeteorites[indexPath.row] : allMeteorites[indexPath.row]
         meteoriteCell.configure(meteorite: meteorite)
         return meteoriteCell
     }
@@ -61,46 +73,16 @@ class MeteoriteListTableViewController: UITableViewController {
         }
     }
     
-    func tableView(_ tableView: UITableView, didHighlightRowAtIndexPath indexPath: IndexPath) {
-
-    }
-    
+    // MARK: - Segues
     @IBSegueAction
     func makeMeteoriteDetailViewController(coder: NSCoder) -> UIViewController? {
-        let selectedMeteorite = meteorites[tableView.indexPathForSelectedRow!.row]
+        let selectedMeteorite = allMeteorites[tableView.indexPathForSelectedRow!.row]
         return MeteoriteDetailViewController(coder: coder, meteorite: selectedMeteorite)
     }
     
-    // MARK: - Private
-    private func addSearchController() {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search for Meteorite..."
-        
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
+    // MARK: - Filtering
+    func setFilteredMeteoritesTo(_ filteredMeteorites: [Meteorite]) {
+        self.filteredMeteorites = filteredMeteorites
     }
 }
 
-// MARK: - Search
-extension MeteoriteListTableViewController: UISearchResultsUpdating {
-    
-    var isSearchBarEmpty: Bool {
-        navigationItem.searchController!.searchBar.text?.isEmpty ?? true
-    }
-    
-    var isFiltering: Bool {
-        navigationItem.searchController!.isActive && !isSearchBarEmpty
-    }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let searchTerm = searchController.searchBar.text else {
-            return
-        }
-        
-        filteredMeteorites = meteorites.filter({ $0.name.contains(searchTerm)})
-        
-        tableView.reloadData()
-    }
-}

@@ -243,11 +243,7 @@
                             <outlet property="delegate" destination="Y5V-5h-drg" id="yu4-tm-DLJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Meteorites" id="7S3-JZ-bJA">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Since 2011" id="H9G-aJ-fsf">
-                            <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Meteorites" id="7S3-JZ-bJA"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J79-qR-zvX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -308,13 +304,13 @@
     <resources>
         <image name="meteorite" width="500" height="500"/>
         <namedColor name="TableCellBackground1">
-            <color red="0.88458136789999997" green="0.95767281689999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.88499999046325684" green="0.95800000429153442" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TableCellBackground2">
             <color red="1" green="0.94300001859664917" blue="0.88300001621246338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TableCellBackground3">
-            <color red="0.58650870740000005" green="0.79460291719999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.58700001239776611" green="0.79500001668930054" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
