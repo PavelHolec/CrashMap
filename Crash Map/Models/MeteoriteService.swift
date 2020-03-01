@@ -5,34 +5,36 @@ enum MeteoriteServiceError: Error {
 }
 
 struct MeteoriteService {
-    let baseUrl = "https://data.nasa.gov/resource/gh4g-9sfh.json"
-    let urlSession: URLSession
-    let decoder = JSONDecoder()
-    let appToken: String
     
-    init() {
-        guard let keysPath = Bundle.main.path(forResource: "Keys", ofType: "plist"),
-            let appTokenValue = NSDictionary(contentsOfFile: keysPath)?.value(forKey: "NasaAppToken") as? String
-        else {
-            fatalError("API NasaAppToken is missing from Keys.plist")
-        }
-        
-        appToken = appTokenValue
+    private let baseUrl: String
+    private let urlSession: URLSession
+    private let decoder = JSONDecoder()
+    private let appToken: String
+    
+    init(url: String, appToken: String) {
+        self.baseUrl = url
+        self.appToken = appToken
         
         //let configuration = URLSessionConfiguration.default
         //configuration.requestCachePolicy = .useProtocolCachePolicy
         urlSession = URLSession(configuration: .default)
     }
     
-    func performRequest(completion: @escaping (Result<[Meteorite], MeteoriteServiceError>) -> Void) {
+    func getMeteorites(sinceYear year: Int, completion: @escaping (Result<[Meteorite], MeteoriteServiceError>) -> Void) {
+        let queryItems = [
+            "$where": "date_extract_y(year) >= \(year)",
+            "$order": "mass DESC"
+        ]
+        performRequest(withQueryItems: queryItems, completion: completion)
+    }
+    
+    func performRequest(withQueryItems queryItems: [String: String], completion: @escaping (Result<[Meteorite], MeteoriteServiceError>) -> Void) {
         
         guard var components = URLComponents(string: baseUrl) else {
             fatalError("Malformed base URL")
         }
         
-        components.queryItems = ["$limit": "1000", "$order": "mass DESC", "$where": "date_extract_y(year) >= 2011"].map { (key, value) in
-            URLQueryItem(name: key, value: value)
-        }
+        components.queryItems = queryItems.map { URLQueryItem(name: $0.key, value: $0.value) }
 
         guard let url = components.url else {
             fatalError("Malformed URL")
@@ -42,7 +44,7 @@ struct MeteoriteService {
         urlRequest.addValue(appToken, forHTTPHeaderField: "X-App-Token")
         //urlRequest.addValue("max-age=\(60*60*24)", forHTTPHeaderField: "Cache-Control")
         
-        let task = urlSession.dataTask(with: urlRequest) { data, response, error in
+        let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             guard error == nil, let data = data else {
                 completion(.failure(.invalidResponse))
                 return
@@ -59,14 +61,6 @@ struct MeteoriteService {
             completion(.success(meteorites))
         }
         
-        task.resume()
-    }
-    
-    var meteorites: [Meteorite] {
-        return []
-    }
-    
-    func getMeteorite(index: Int) -> Meteorite {
-        meteorites[index]
+        dataTask.resume()
     }
 }

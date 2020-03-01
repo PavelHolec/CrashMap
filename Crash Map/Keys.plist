@@ -2,7 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NasaAppToken</key>
-	<string>*REDACTED*</string>
+	<key>NasaBaseURL</key>
+	<string>https://data.nasa.gov/resource/gh4g-9sfh.json</string>
+	<key>FilterSinceYear</key>
+	<integer>2011</integer>
+    <key>NasaAppToken</key>
+    <string>*REDACTED*</string>
 </dict>
 </plist>
