@@ -5,7 +5,16 @@ enum Fall: String, Codable {
     case found = "Found"
 }
 
-typealias Coordinates = (lat: Double, lon: Double)
+struct Coordinates {
+    let lat: Double
+    let lon: Double
+    
+    var isRangeValid: Bool {
+        -90...90 ~= lat &&
+        -180...180 ~= lon &&
+        (lat != 0 && lon != 0)
+    }
+}
 
 struct Meteorite {
     
