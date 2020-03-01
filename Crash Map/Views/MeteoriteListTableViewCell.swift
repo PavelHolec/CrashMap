@@ -14,6 +14,7 @@ class MeteoriteListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var classLabel: UILabel!
+    @IBOutlet weak var locationUnknownLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
     
     @IBOutlet weak var massLabel: UILabel!
@@ -57,9 +58,9 @@ class MeteoriteListTableViewCell: UITableViewCell {
     
     // MARK: - Privates
     private func scaleMeteoriteImage(toRelativeMass relativeMass: CGFloat) {
-        let imageScale = 0.1 + relativeMass
+        let imageScale = 0.1 + relativeMass * 0.5
         meteoriteImageView.transform = CGAffineTransform(scaleX: imageScale, y: imageScale)
-        massLabelTrailingConstraint.constant = 30 + 80 * relativeMass
+        massLabelTrailingConstraint.constant = 30 + 40 * relativeMass
     }
     
     private func setBackgroundGradientColors(forRelativeMass relativeMass: CGFloat) {
@@ -76,18 +77,23 @@ class MeteoriteListTableViewCell: UITableViewCell {
     }
     
     private func setEnabledState(forCoordinates coordinates: Coordinates?) {
-        if coordinates == nil {
-            gradientView.alpha = 0.3
-            nameLabel.alpha = 0.6
-            classLabel.alpha = 0.6
-            massLabel.alpha = 0.6
+        guard let coordinates = coordinates, coordinates.isRangeValid else {
+            nameLabel.alpha = 0.3
+            classLabel.alpha = 0.4
+            locationUnknownLabel.alpha = 1.0
+            massLabel.alpha = 0.3
             shadowView.alpha = 0.0
-        } else {
-            gradientView.alpha = 1.0
-            nameLabel.alpha = 1.0
-            classLabel.alpha = 1.0
-            massLabel.alpha = 1.0
-            shadowView.alpha = 1.0
+            meteoriteImageView.alpha = 0.5
+            isUserInteractionEnabled = false
+            return
         }
+        
+        nameLabel.alpha = 1.0
+        classLabel.alpha = 1.0
+        locationUnknownLabel.alpha = 0.0
+        massLabel.alpha = 1.0
+        shadowView.alpha = 1.0
+        meteoriteImageView.alpha = 1.0
+        isUserInteractionEnabled = true
     }
 }

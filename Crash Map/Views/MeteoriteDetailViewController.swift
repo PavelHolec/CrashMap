@@ -2,6 +2,8 @@ import Foundation
 import UIKit
 import MapKit
 
+fileprivate let initialMapZoomDelta = 50.0
+
 class MeteoriteDetailViewController: UIViewController {
     
     let meteorite: Meteorite
@@ -12,7 +14,7 @@ class MeteoriteDetailViewController: UIViewController {
     init?(coder: NSCoder, meteorite: Meteorite) {
         self.meteorite = meteorite
         
-        guard let coordinates = meteorite.coordinates else {
+        guard let coordinates = meteorite.coordinates, coordinates.isRangeValid else {
             fatalError("Meteorite with no coordinates cannot be selected")
         }
         
@@ -34,13 +36,14 @@ class MeteoriteDetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let region = MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3))
+        let region = MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: initialMapZoomDelta, longitudeDelta: initialMapZoomDelta))
         mapView.setRegion(region, animated: true)
     }
     
     func addMeteoriteAnnotation() {
         let annotation = MKPointAnnotation()
-        annotation.title = meteorite.name
+        annotation.title = meteorite.yearTitle
+        annotation.subtitle = meteorite.fallTitle
         annotation.coordinate = location
         mapView.addAnnotation(annotation)
     }
