@@ -55,7 +55,7 @@ struct Meteorite {
         
         switch massInGrams {
         case ..<1:
-            return "\((massInGrams * 1000).rounded) mg"
+            return "\(((massInGrams * 10).rounded()) / 10.0) g"
         case 1000...:
             return "\((massInGrams / 1000).rounded) kg"
         default:

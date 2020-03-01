@@ -2,33 +2,38 @@ import UIKit
 
 class MeteoriteListTableViewCell: UITableViewCell {
     
+    private var selectedColor: UIColor?
+    
+    // MARK: - IBOutlets
+    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var foundLabel: UILabel!
+    
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var gradientView: GradientView!
     @IBOutlet weak var meteoriteImageView: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var yearLabel: UILabel!
-    @IBOutlet weak var foundLabel: UILabel!
+    @IBOutlet weak var classLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
     
     @IBOutlet weak var massLabel: UILabel!
-    @IBOutlet weak var classLabel: UILabel!
+    @IBOutlet weak var massLabelTrailingConstraint: NSLayoutConstraint!
     
+    // MARK: - View
     override func awakeFromNib() {
         super.awakeFromNib()
-        setCellSelectedColor(UIColor(named: "TableCellSelected")!)
-        
-//        meteoriteImageView.frame = CGRect(x: bounds.maxX - 100, y: bounds.maxY - 85, width: 80, height: 80)
-//        meteoriteImageView.layer.anchorPoint = CGPoint(x: 0.84, y: 0.63)
-        meteoriteImageView.transform = .identity
+        yearLabel.font = UIFont.systemFont(ofSize: yearLabel.font.pointSize, weight: .bold)
+        nameLabel.font = UIFont.systemFont(ofSize: nameLabel.font.pointSize, weight: .bold)
+        idLabel.font = UIFont.systemFont(ofSize: idLabel.font.pointSize * 0.7)
     }
     
-    var color: UIColor? {
-        get {
-            return shadowView.backgroundColor
-        }
-        set {
-            shadowView.backgroundColor = newValue
+    // MARK: - Configuration
+    func set(selected: Bool) {
+        if selected {
+            selectedColor = gradientView.startColor
+            gradientView.startColor = UIColor(named: "TableCellSelected")!
+        } else if let selectedColor = selectedColor {
+            gradientView.startColor = selectedColor
         }
     }
     
@@ -41,17 +46,48 @@ class MeteoriteListTableViewCell: UITableViewCell {
         massLabel.text = meteorite.massTitle
         classLabel.text = meteorite.class
         
-        if meteorite.massInGrams > 0 {
-            let scale = 0.25 + CGFloat(20 * meteorite.massInGrams / 1_000_000)
-            meteoriteImageView.transform = CGAffineTransform(scaleX: scale, y: scale).rotated(by: -0.2)
-            meteoriteImageView.isHidden = false
-            //gradientView.middleLocation = CGFloat(0.75 - meteorite.massInGrams / 1_0_000.0)
-        } else {
-            meteoriteImageView.isHidden = true
-        }
+        let relativeMass = CGFloat(meteorite.massInGrams.remap(from: 0, to: 10_000, curve: .easeIn))
         
-        if meteorite.coordinates == nil {
-            selectionStyle = .none
+        scaleMeteoriteImage(toRelativeMass: relativeMass)
+        setBackgroundGradientColors(forRelativeMass: relativeMass)
+        setEnabledState(forCoordinates: meteorite.coordinates)
+        
+        meteoriteImageView.isHidden = meteorite.massInGrams > 0 ? false : true
+    }
+    
+    // MARK: - Privates
+    private func scaleMeteoriteImage(toRelativeMass relativeMass: CGFloat) {
+        let imageScale = 0.1 + relativeMass
+        meteoriteImageView.transform = CGAffineTransform(scaleX: imageScale, y: imageScale)
+        massLabelTrailingConstraint.constant = 30 + 80 * relativeMass
+    }
+    
+    private func setBackgroundGradientColors(forRelativeMass relativeMass: CGFloat) {
+        let middleLocation = 0.85 - relativeMass * 0.05
+        gradientView.middleLocation = middleLocation
+        gradientView.endLocation = middleLocation + 0.1
+        
+        gradientView.startColor = UIColor(named: "TableCellBackground1")!
+            .withModified(saturationOffset: relativeMass * 0.2,
+                          brightnessOffset: -relativeMass * 0.05)
+        
+        gradientView.middleColor = UIColor(named: "TableCellBackground2")!
+            .withModified(saturationOffset: relativeMass * 0.5)
+    }
+    
+    private func setEnabledState(forCoordinates coordinates: Coordinates?) {
+        if coordinates == nil {
+            gradientView.alpha = 0.3
+            nameLabel.alpha = 0.6
+            classLabel.alpha = 0.6
+            massLabel.alpha = 0.6
+            shadowView.alpha = 0.0
+        } else {
+            gradientView.alpha = 1.0
+            nameLabel.alpha = 1.0
+            classLabel.alpha = 1.0
+            massLabel.alpha = 1.0
+            shadowView.alpha = 1.0
         }
     }
 }

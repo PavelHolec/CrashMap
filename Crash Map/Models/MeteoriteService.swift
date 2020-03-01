@@ -6,6 +6,7 @@ enum MeteoriteServiceError: Error {
 
 struct MeteoriteService {
     let baseUrl = "https://data.nasa.gov/resource/gh4g-9sfh.json"
+    let urlSession: URLSession
     let decoder = JSONDecoder()
     let appToken: String
     
@@ -13,24 +14,35 @@ struct MeteoriteService {
         guard let keysPath = Bundle.main.path(forResource: "Keys", ofType: "plist"),
             let appTokenValue = NSDictionary(contentsOfFile: keysPath)?.value(forKey: "NasaAppToken") as? String
         else {
-            fatalError("AppKey is missing")
+            fatalError("API NasaAppToken is missing from Keys.plist")
         }
         
         appToken = appTokenValue
+        
+        //let configuration = URLSessionConfiguration.default
+        //configuration.requestCachePolicy = .useProtocolCachePolicy
+        urlSession = URLSession(configuration: .default)
     }
     
     func performRequest(completion: @escaping (Result<[Meteorite], MeteoriteServiceError>) -> Void) {
-        guard let url = URL(string: baseUrl + "?$limit=30&year='2011-01-01T00:00:00'") else {
+        
+        guard var components = URLComponents(string: baseUrl) else {
+            fatalError("Malformed base URL")
+        }
+        
+        components.queryItems = ["$limit": "1000", "$order": "mass DESC", "$where": "date_extract_y(year) >= 2011"].map { (key, value) in
+            URLQueryItem(name: key, value: value)
+        }
+
+        guard let url = components.url else {
             fatalError("Malformed URL")
         }
         
-        //.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-        
         var urlRequest = URLRequest(url: url)
         urlRequest.addValue(appToken, forHTTPHeaderField: "X-App-Token")
+        //urlRequest.addValue("max-age=\(60*60*24)", forHTTPHeaderField: "Cache-Control")
         
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: urlRequest) { data, response, error in
+        let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             guard error == nil, let data = data else {
                 completion(.failure(.invalidResponse))
                 return
@@ -43,7 +55,6 @@ struct MeteoriteService {
             
             let meteorites = meteoritesJson
                 .compactMap { Meteorite(fromJson: $0) }
-                .sorted(by: { $0.massInGrams > $1.massInGrams })
             
             completion(.success(meteorites))
         }
