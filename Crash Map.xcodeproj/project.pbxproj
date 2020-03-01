@@ -11,9 +11,11 @@
 		E99719992406D4E1005195B7 /* MeteoriteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99719982406D4E1005195B7 /* MeteoriteDetailViewController.swift */; };
 		E997199B2406D7FF005195B7 /* Meteorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E997199A2406D7FF005195B7 /* Meteorite.swift */; };
 		E997199D2406EFA2005195B7 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E997199C2406EFA2005195B7 /* Keys.plist */; };
-		E99ED888240831F600527741 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99ED887240831F600527741 /* UITableViewCell+Extensions.swift */; };
 		E99ED88A240847D000527741 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99ED889240847D000527741 /* Foundation+Extensions.swift */; };
 		E99ED88C2408F6D600527741 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99ED88B2408F6D600527741 /* GradientView.swift */; };
+		E99ED88E240A90D300527741 /* UIKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99ED88D240A90D300527741 /* UIKit+Extensions.swift */; };
+		E99ED890240BCDCE00527741 /* RoundedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99ED88F240BCDCE00527741 /* RoundedLabel.swift */; };
+		E99ED894240BD07700527741 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E99ED893240BD07700527741 /* Colors.xcassets */; };
 		E9FB3D9D2406B04400569BDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB3D9C2406B04400569BDB /* AppDelegate.swift */; };
 		E9FB3D9F2406B04400569BDB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB3D9E2406B04400569BDB /* SceneDelegate.swift */; };
 		E9FB3DA42406B04400569BDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FB3DA22406B04400569BDB /* Main.storyboard */; };
@@ -39,9 +41,11 @@
 		E99719982406D4E1005195B7 /* MeteoriteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteoriteDetailViewController.swift; sourceTree = "<group>"; };
 		E997199A2406D7FF005195B7 /* Meteorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meteorite.swift; sourceTree = "<group>"; };
 		E997199C2406EFA2005195B7 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
-		E99ED887240831F600527741 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		E99ED889240847D000527741 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
 		E99ED88B2408F6D600527741 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		E99ED88D240A90D300527741 /* UIKit+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+Extensions.swift"; sourceTree = "<group>"; };
+		E99ED88F240BCDCE00527741 /* RoundedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedLabel.swift; sourceTree = "<group>"; };
+		E99ED893240BD07700527741 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		E9FB3D992406B04400569BDB /* Crash Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crash Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FB3D9C2406B04400569BDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9FB3D9E2406B04400569BDB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,10 +90,28 @@
 		E99ED886240831DB00527741 /* Reusable */ = {
 			isa = PBXGroup;
 			children = (
-				E99ED887240831F600527741 /* UITableViewCell+Extensions.swift */,
 				E99ED88B2408F6D600527741 /* GradientView.swift */,
+				E99ED88F240BCDCE00527741 /* RoundedLabel.swift */,
 			);
 			path = Reusable;
+			sourceTree = "<group>";
+		};
+		E99ED891240BD04600527741 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E99ED889240847D000527741 /* Foundation+Extensions.swift */,
+				E99ED88D240A90D300527741 /* UIKit+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E99ED892240BD05C00527741 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E9FB3DA52406B04800569BDB /* Assets.xcassets */,
+				E99ED893240BD07700527741 /* Colors.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		E9FB3D902406B04400569BDB = {
@@ -113,14 +135,14 @@
 		E9FB3D9B2406B04400569BDB /* Crash Map */ = {
 			isa = PBXGroup;
 			children = (
+				E99ED892240BD05C00527741 /* Resources */,
+				E99ED891240BD04600527741 /* Extensions */,
 				E99719952406D1D3005195B7 /* Models */,
 				E9FB3DC02406C23A00569BDB /* Views */,
 				E9FB3D9C2406B04400569BDB /* AppDelegate.swift */,
 				E9FB3D9E2406B04400569BDB /* SceneDelegate.swift */,
-				E9FB3DA52406B04800569BDB /* Assets.xcassets */,
 				E9FB3DAA2406B04800569BDB /* Info.plist */,
 				E997199C2406EFA2005195B7 /* Keys.plist */,
-				E99ED889240847D000527741 /* Foundation+Extensions.swift */,
 			);
 			path = "Crash Map";
 			sourceTree = "<group>";
@@ -228,6 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E99ED894240BD07700527741 /* Colors.xcassets in Resources */,
 				E9FB3DA92406B04800569BDB /* LaunchScreen.storyboard in Resources */,
 				E997199D2406EFA2005195B7 /* Keys.plist in Resources */,
 				E9FB3DA62406B04800569BDB /* Assets.xcassets in Resources */,
@@ -253,9 +276,10 @@
 				E9FB3DC22406C27E00569BDB /* MeteoriteListTableViewCell.swift in Sources */,
 				E99ED88C2408F6D600527741 /* GradientView.swift in Sources */,
 				E9FB3D9D2406B04400569BDB /* AppDelegate.swift in Sources */,
-				E99ED888240831F600527741 /* UITableViewCell+Extensions.swift in Sources */,
 				E99719972406D227005195B7 /* MeteoriteService.swift in Sources */,
 				E9FB3D9F2406B04400569BDB /* SceneDelegate.swift in Sources */,
+				E99ED890240BCDCE00527741 /* RoundedLabel.swift in Sources */,
+				E99ED88E240A90D300527741 /* UIKit+Extensions.swift in Sources */,
 				E9FB3DBF2406B19F00569BDB /* MeteoriteListTableViewController.swift in Sources */,
 				E997199B2406D7FF005195B7 /* Meteorite.swift in Sources */,
 				E99ED88A240847D000527741 /* Foundation+Extensions.swift in Sources */,

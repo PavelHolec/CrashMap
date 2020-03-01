@@ -42,6 +42,29 @@ class MeteoriteListTableViewController: UITableViewController {
         return meteoriteCell
     }
     
+    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! MeteoriteListTableViewCell
+        cell.set(selected: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! MeteoriteListTableViewCell
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            cell.set(selected: false)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! MeteoriteListTableViewCell
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            cell.set(selected: false)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didHighlightRowAtIndexPath indexPath: IndexPath) {
+
+    }
+    
     @IBSegueAction
     func makeMeteoriteDetailViewController(coder: NSCoder) -> UIViewController? {
         let selectedMeteorite = meteorites[tableView.indexPathForSelectedRow!.row]
