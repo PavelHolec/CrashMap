@@ -69,10 +69,10 @@ class MeteoriteListTableViewCell: UITableViewCell {
         
         gradientView.startColor = UIColor(named: "TableCellBackground1")!
             .withModified(saturationOffset: relativeMass * 0.2,
-                          brightnessOffset: -relativeMass * 0.05)
+                          brightnessOffset: -relativeMass * 0.03)
         
         gradientView.middleColor = UIColor(named: "TableCellBackground2")!
-            .withModified(saturationOffset: relativeMass * 0.5)
+            .withModified(saturationOffset: relativeMass * 0.2)
     }
     
     private func setEnabledState(forCoordinates coordinates: Coordinates?) {

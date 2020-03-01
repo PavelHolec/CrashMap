@@ -3,8 +3,16 @@ import UIKit
 
 @IBDesignable class RoundedLabel: UILabel
 {
-    @IBInspectable var cornerRadius: CGFloat = 3
-    @IBInspectable var insets: CGFloat = 2
+    @IBInspectable var cornerRadius: CGFloat = 1 {
+        didSet {
+            sharedInit()
+        }
+    }
+    @IBInspectable var insets: CGFloat = 2 {
+        didSet {
+            setNeedsLayout()
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,14 +30,17 @@ import UIKit
     }
     
     override func drawText(in rect: CGRect) {
-        let edgeInsets = UIEdgeInsets.init(top: insets, left: insets * 2, bottom: insets, right: insets * 2)
+        let edgeInsets = UIEdgeInsets.init(top: insets,
+                                           left: ceil(insets * 1.5),
+                                           bottom: insets,
+                                           right: ceil(insets * 1.5))
         super.drawText(in: rect.inset(by: edgeInsets))
     }
     
     override var intrinsicContentSize: CGSize {
         let size = super.intrinsicContentSize
-        return CGSize(width: size.width + insets * 4,
-                      height: size.height)
+        return CGSize(width: ceil(size.width + insets * 3),
+                      height: ceil(size.height))
     }
     
     func sharedInit() {
