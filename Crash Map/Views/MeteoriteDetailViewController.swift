@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import MapKit
 
-fileprivate let initialMapZoomDelta = 50.0
+fileprivate let initialMapZoomDelta = 30.0
 
 class MeteoriteDetailViewController: UIViewController {
     
