@@ -15,8 +15,6 @@ struct MeteoriteService {
         self.baseUrl = url
         self.appToken = appToken
         
-        //let configuration = URLSessionConfiguration.default
-        //configuration.requestCachePolicy = .useProtocolCachePolicy
         urlSession = URLSession(configuration: .default)
     }
     
@@ -42,7 +40,6 @@ struct MeteoriteService {
         
         var urlRequest = URLRequest(url: url)
         urlRequest.addValue(appToken, forHTTPHeaderField: "X-App-Token")
-        //urlRequest.addValue("max-age=\(60*60*24)", forHTTPHeaderField: "Cache-Control")
         
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             guard error == nil, let data = data else {

@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import MapKit
 
-fileprivate let initialMapZoomDelta = 30.0
+fileprivate let initialMapZoomDelta = 10.0
 
 class MeteoriteDetailViewController: UIViewController {
     
@@ -41,10 +41,6 @@ class MeteoriteDetailViewController: UIViewController {
     }
     
     func addMeteoriteAnnotation() {
-        let annotation = MKPointAnnotation()
-        annotation.title = meteorite.yearTitle
-        annotation.subtitle = meteorite.fallTitle
-        annotation.coordinate = location
-        mapView.addAnnotation(annotation)
+        mapView.addAnnotation(meteorite.mapAnnotation!)
     }
 }

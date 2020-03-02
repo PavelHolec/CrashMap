@@ -31,9 +31,9 @@ import UIKit
     
     override func drawText(in rect: CGRect) {
         let edgeInsets = UIEdgeInsets.init(top: insets,
-                                           left: ceil(insets * 1.5),
+                                           left: floor(insets * 1.5),
                                            bottom: insets,
-                                           right: ceil(insets * 1.5))
+                                           right: floor(insets * 1.5))
         super.drawText(in: rect.inset(by: edgeInsets))
     }
     
