@@ -284,19 +284,19 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mqe-e9-4Ww">
-                            <rect key="frame" x="-1" y="-1" width="242" height="99"/>
+                            <rect key="frame" x="-1" y="-1" width="242" height="111"/>
                             <subviews>
                                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Kot-WY-su4">
-                                    <rect key="frame" x="0.0" y="0.0" width="242" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="242" height="111"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </mapView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="up5-ex-ZNO" customClass="GradientView" customModule="Crash_Map" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="58" width="240" height="40"/>
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="up5-ex-ZNO" customClass="GradientView" customModule="Crash_Map" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="12" width="240" height="80"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="8ma-12-qq2"/>
+                                <constraint firstAttribute="height" constant="80" id="8ma-12-qq2"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="point" keyPath="startPoint">
@@ -321,18 +321,18 @@
                                     <real key="value" value="1"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="number" keyPath="middleLocation">
-                                    <real key="value" value="0.5"/>
+                                    <real key="value" value="1"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byd-xF-3PO" userLabel="Fill View">
-                            <rect key="frame" x="0.0" y="98" width="240" height="12"/>
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byd-xF-3PO" userLabel="Fill View">
+                            <rect key="frame" x="0.0" y="92" width="240" height="18"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="12" id="GTh-Ud-CbJ"/>
+                                <constraint firstAttribute="height" constant="18" id="GTh-Ud-CbJ"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JXW-NB-XE8" customClass="GradientView" customModule="Crash_Map" customModuleProvider="target">
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JXW-NB-XE8" customClass="GradientView" customModule="Crash_Map" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="110" width="240" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="18" id="gfP-VR-DqO"/>
@@ -360,7 +360,7 @@
                                     <real key="value" value="1"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="number" keyPath="middleLocation">
-                                    <real key="value" value="0.5"/>
+                                    <real key="value" value="0.0"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
@@ -375,7 +375,7 @@
                         <constraint firstAttribute="trailing" secondItem="byd-xF-3PO" secondAttribute="trailing" id="ZDf-aw-np5"/>
                         <constraint firstAttribute="trailing" secondItem="up5-ex-ZNO" secondAttribute="trailing" id="dmy-0Z-ZNV"/>
                         <constraint firstAttribute="bottom" secondItem="JXW-NB-XE8" secondAttribute="bottom" id="fvA-Ry-jm2"/>
-                        <constraint firstItem="byd-xF-3PO" firstAttribute="top" secondItem="Mqe-e9-4Ww" secondAttribute="bottom" id="h4F-ZT-KZa"/>
+                        <constraint firstItem="byd-xF-3PO" firstAttribute="bottom" secondItem="Mqe-e9-4Ww" secondAttribute="bottom" id="h4F-ZT-KZa"/>
                         <constraint firstItem="up5-ex-ZNO" firstAttribute="leading" secondItem="vS5-7b-TkK" secondAttribute="leading" id="lzw-ki-H05"/>
                         <constraint firstItem="byd-xF-3PO" firstAttribute="leading" secondItem="vS5-7b-TkK" secondAttribute="leading" id="moJ-a6-oF5"/>
                         <constraint firstItem="Mqe-e9-4Ww" firstAttribute="leading" secondItem="vS5-7b-TkK" secondAttribute="leading" constant="-1" id="vJE-Zk-0dn"/>
