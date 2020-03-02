@@ -5,6 +5,7 @@ fileprivate let cardPushedAffineTransform = CGAffineTransform(scaleX: 0.97, y: 0
 class MeteoriteListTableViewCell: UITableViewCell {
     
     private var selectedColor: UIColor?
+    private(set) var coordinates: Coordinates?
     
     // MARK: - IBOutlets
     @IBOutlet weak var yearLabel: UILabel!
@@ -33,10 +34,11 @@ class MeteoriteListTableViewCell: UITableViewCell {
     }
     
     // MARK: - Configuration
-    func set(selected: Bool) {
-        if selected {
+    func set(isSelected: Bool) {
+        if isSelected {
             selectedColor = gradientView.startColor
             gradientView.startColor = UIColor(named: "TableCellSelected")!
+            yearLabel.textColor = .label
             UIView.animate(withDuration: 0.2) {
                 self.cardView.transform = cardPushedAffineTransform
                 self.shadowView.transform = cardPushedAffineTransform
@@ -44,6 +46,7 @@ class MeteoriteListTableViewCell: UITableViewCell {
             }
         } else if let selectedColor = selectedColor {
             gradientView.startColor = selectedColor
+            yearLabel.textColor = .secondaryLabel
             UIView.animate(withDuration: 0.2) {
                 self.cardView.transform = .identity
                 self.shadowView.transform = .identity
@@ -53,6 +56,8 @@ class MeteoriteListTableViewCell: UITableViewCell {
     }
     
     func configure(meteorite: Meteorite) {
+        coordinates = meteorite.coordinates
+        
         nameLabel.text = meteorite.name
         yearLabel.text = meteorite.yearTitle
         foundLabel.text = meteorite.fallTitle
@@ -65,7 +70,8 @@ class MeteoriteListTableViewCell: UITableViewCell {
         
         scaleMeteoriteImage(toRelativeMass: relativeMass)
         setBackgroundGradientColors(forRelativeMass: relativeMass)
-        setEnabledState(forCoordinates: meteorite.coordinates)
+        
+        setEnabledOrDisabledState()
         
         meteoriteImageView.isHidden = meteorite.massInGrams > 0 ? false : true
     }
@@ -83,7 +89,7 @@ class MeteoriteListTableViewCell: UITableViewCell {
         gradientView.endLocation = middleLocation + 0.1
         
         gradientView.startColor = UIColor(named: "TableCellBackground1")!
-            .withModified(saturationOffset: relativeMass * 0.02,
+            .withModified(saturationOffset: relativeMass * 0.01,
                           brightnessOffset: -relativeMass * 0.01)
         
         idLabel.backgroundColor = gradientView.startColor
@@ -97,18 +103,8 @@ class MeteoriteListTableViewCell: UITableViewCell {
             .withModified(saturationOffset: relativeMass * 0.2)
     }
     
-    private func setEnabledState(forCoordinates coordinates: Coordinates?) {
+    private func setEnabledOrDisabledState() {
         guard let coordinates = coordinates, coordinates.isRangeValid else {
-//            nameLabel.alpha = 0.5
-//            classLabel.alpha = 0.5
-//
-//            massLabel.alpha = 0.5
-//            shadowView.alpha = 0.0
-//            meteoriteImageView.alpha = 0.5
-//            locationUnknownSpacerHeightConstraint.constant = 0
-//            locationUnknownContentTrailingConstraint.constant = 23
-//
-
             shadowView.alpha = 0.0
             cardView.alpha = 0.6
             cardView.transform = cardPushedAffineTransform
@@ -117,17 +113,7 @@ class MeteoriteListTableViewCell: UITableViewCell {
             isUserInteractionEnabled = false
             return
         }
-        
-//        nameLabel.alpha = 1.0
-//        classLabel.alpha = 1.0
-//
-//        massLabel.alpha = 1.0
-//
-//        meteoriteImageView.alpha = 1.0
 
-//        locationUnknownContentTrailingConstraint.constant = 20
-//
-        
         shadowView.alpha = 1.0
         cardView.alpha = 1.0
         cardView.transform = .identity

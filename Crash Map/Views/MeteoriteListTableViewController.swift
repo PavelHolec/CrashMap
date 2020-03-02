@@ -45,9 +45,24 @@ class MeteoriteListTableViewController: UITableViewController {
     }
     
     func refresh() {
-        self.mapView.removeAnnotations(self.mapView.annotations)
-        self.mapView.addAnnotations(meteorites.compactMap { $0.mapAnnotation })
-        self.tableView.reloadData()
+        reloadAnnotations()
+        tableView.reloadData()
+    }
+    
+    private func reloadAnnotations() {
+        let previousAnnotations = mapView.annotations.map { $0 }
+        let currentAnnotations = meteorites.compactMap { $0.mapAnnotation }
+        
+        let annotationsDiffs = currentAnnotations.difference(from: previousAnnotations) { $0.coordinate == $1.coordinate }
+        
+        for annotationDiff in annotationsDiffs {
+            switch annotationDiff {
+            case let .remove(_, annotation, _):
+                self.mapView.removeAnnotation(annotation)
+            case let .insert(_, annotation, _):
+                self.mapView.addAnnotation(annotation)
+            }
+        }
     }
     
     // MARK: - TableView
@@ -72,33 +87,43 @@ class MeteoriteListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! MeteoriteListTableViewCell
-        cell.set(selected: true)
+        cell.set(isSelected: true)
     }
     
     override func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! MeteoriteListTableViewCell
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            cell.set(selected: false)
+            cell.set(isSelected: false)
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! MeteoriteListTableViewCell
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let annotationToSelect = self?.mapView.annotations[safe: indexPath.row] else {
+                return
+            }
+            self?.mapView.selectAnnotation(annotationToSelect, animated: true)
+        }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            cell.set(selected: false)
+            cell.set(isSelected: false)
         }
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let gradientViewTop = tableHeaderView.subviews[1] as! GradientView
-        gradientViewTop.startColor = UIColor.systemBackground.withModified(alphaOffset: -1.0)
-        let gradientViewBottom = tableHeaderView.subviews[3] as! GradientView
+        gradientViewTop.endColor = UIColor.systemBackground.withModified(alphaOffset: -1.0)
+        let gradientViewMiddle = tableHeaderView.subviews[2] as! GradientView
+        gradientViewMiddle.startColor = UIColor.systemBackground.withModified(alphaOffset: -1.0)
+        let gradientViewBottom = tableHeaderView.subviews[4] as! GradientView
         gradientViewBottom.endColor = UIColor.systemBackground.withModified(alphaOffset: -1.0)
         return meteorites.count > 0 ? tableHeaderView : nil
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return meteorites.count > 0 ? tableView.bounds.height * 0.3 : 0
+        return meteorites.count > 0 ? tableView.bounds.height * 0.55 : 0
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -109,11 +134,19 @@ class MeteoriteListTableViewController: UITableViewController {
         return meteorites.count > 0 ? 0 : tableView.bounds.height * 0.6
     }
     
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        navigationItem.searchController?.searchBar.alpha = min(scrollView.contentOffset.y, 50) / 50
+    }
+    
     // MARK: - Segues
     @IBSegueAction
     func makeMeteoriteDetailViewController(coder: NSCoder) -> UIViewController? {
         let selectedMeteorite = meteorites[tableView.indexPathForSelectedRow!.row]
         return MeteoriteDetailViewController(coder: coder, meteorite: selectedMeteorite)
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return false
     }
     
     // MARK: - Filtering
