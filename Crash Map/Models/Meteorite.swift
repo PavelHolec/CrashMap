@@ -1,10 +1,5 @@
 import Foundation
 
-enum Fall: String, Codable {
-    case fell = "Fell"
-    case found = "Found"
-}
-
 struct Coordinates {
     let lat: Double
     let lon: Double
@@ -18,10 +13,22 @@ struct Coordinates {
 
 struct Meteorite {
     
+    enum Fall: String, Codable {
+        case fell = "Fell"
+        case found = "Found"
+    }
+
+    enum Kind: Int {
+        case stony = 1
+        case stonyIron = 2
+        case iron = 3
+    }
+    
     let name: String
     let id: String
     let type: String
     let `class`: String
+    let kind: Kind
     let massInGrams: Double
     let fall: Fall
     let year: Int?
@@ -78,10 +85,22 @@ extension Meteorite {
         name = json.name
         id = json.id
         type = json.nametype
-        `class` = json.recclass
         massInGrams = json.mass == nil ? 0 : Double(json.mass!) ?? 0
         fall = json.fall
         year = Int(String(json.year.prefix(4)))
+        
+        switch json.recclass {
+        case let recclass where recclass.starts(with: "Iron,"):
+            kind = .iron
+            `class` = json.recclass
+        case let recclass where recclass.contains("Pallasite,"):
+            kind = .stonyIron
+            `class` = json.recclass
+        default:
+            kind = .stony
+            `class` = "Stony, \(json.recclass)"
+            break
+        }
         
         if let lat = Double(json.reclat), let lon = Double(json.reclong) {
             coordinates = Coordinates(lat: lat, lon: lon)

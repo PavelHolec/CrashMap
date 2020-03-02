@@ -9,6 +9,8 @@ class MeteoriteListTableViewController: UITableViewController {
     private(set) var filterSinceYear: Int!
     private(set) var allMeteorites: [Meteorite] = []
     private(set) var filteredMeteorites: [Meteorite] = []
+    private(set) var visibleTableViewBounds: CGRect!
+    private(set) var indexPathForSelectedRow: IndexPath?
     
     var isFiltering: Bool {
         navigationItem.searchController!.isActive && !isSearchBarEmpty
@@ -18,8 +20,13 @@ class MeteoriteListTableViewController: UITableViewController {
         isFiltering ? filteredMeteorites : allMeteorites
     }
     
+    var tableHeaderHeight: CGFloat {
+        tableView.bounds.height * 0.5 - 20
+    }
+    
     // MARK: - IBOutlets
     @IBOutlet private var emptyTableView: UIView!
+    @IBOutlet private var emptyTableViewLabel: UILabel!
     @IBOutlet private var tableHeaderView: UIView!
     @IBOutlet private var mapView: MKMapView!
     
@@ -31,17 +38,24 @@ class MeteoriteListTableViewController: UITableViewController {
     
     // MARK: - View
     override func viewDidLoad() {
+        visibleTableViewBounds = tableView.bounds.inset(by: UIEdgeInsets(top: tableHeaderHeight - 50, left: 0, bottom: 0, right: 0))
+        
         super.viewDidLoad()
         addSearchController()
         setBaseFilter(toYear: filterSinceYear)
         enablePullToResfresh()
         
         mapView.setRegion(MKCoordinateRegion(MKMapRect.world), animated: true)
+        reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        reloadData()
+        
+        if let indexPathForSelectedRow = indexPathForSelectedRow {
+            scrollRowToVisible(at: indexPathForSelectedRow)
+            tableView.selectRow(at: indexPathForSelectedRow, animated: true, scrollPosition: .none)
+        }
     }
     
     func refresh() {
@@ -82,34 +96,34 @@ class MeteoriteListTableViewController: UITableViewController {
         }
         
         meteoriteCell.configure(meteorite: meteorite)
+        
         return meteoriteCell
     }
     
     override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! MeteoriteListTableViewCell
-        cell.set(isSelected: true)
+        cell.setCustomHighlighted(true, animated: true)
     }
-    
+
     override func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! MeteoriteListTableViewCell
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            cell.set(isSelected: false)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            guard tableView.indexPathForSelectedRow != indexPath else {
+                return
+            }
+            cell.setCustomHighlighted(false, animated: true)
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! MeteoriteListTableViewCell
         
-        DispatchQueue.main.async { [weak self] in
-            guard let annotationToSelect = self?.mapView.annotations[safe: indexPath.row] else {
-                return
-            }
-            self?.mapView.selectAnnotation(annotationToSelect, animated: true)
-        }
+        guard let annotationToSelect = mapView.annotations.first(where: { ($0 as? Meteorite.Annotation)?.id == cell.meteorite.id }) else {
+            return
+        }  
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            cell.set(isSelected: false)
-        }
+        indexPathForSelectedRow = indexPath
+        mapView.selectAnnotation(annotationToSelect, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -123,10 +137,11 @@ class MeteoriteListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return meteorites.count > 0 ? tableView.bounds.height * 0.55 : 0
+        return meteorites.count > 0 ? tableHeaderHeight : 0
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        emptyTableViewLabel.text = isFiltering ? "No matching meteorite" : "No data available"
         return meteorites.count > 0 ? nil : emptyTableView
     }
     
@@ -135,18 +150,24 @@ class MeteoriteListTableViewController: UITableViewController {
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        navigationItem.searchController?.searchBar.alpha = min(scrollView.contentOffset.y, 50) / 50
+        navigationItem.searchController?.searchBar.alpha = navigationItem.searchController!.isActive ? 1.0 : min(scrollView.contentOffset.y, 50) / 50
+    }
+    
+    func scrollRowToVisible(at indexPath: IndexPath) {
+        let selectedCellRect = tableView.rectForRow(at: indexPath)
+            .offsetBy(dx: -tableView.contentOffset.x, dy: -tableView.contentOffset.y)
+    
+        guard !visibleTableViewBounds.contains(selectedCellRect) else {
+            return
+        }
+        
+        tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
     }
     
     // MARK: - Segues
-    @IBSegueAction
-    func makeMeteoriteDetailViewController(coder: NSCoder) -> UIViewController? {
+    @IBSegueAction func makeMeteoriteDetailViewController(coder: NSCoder) -> UIViewController? {
         let selectedMeteorite = meteorites[tableView.indexPathForSelectedRow!.row]
         return MeteoriteDetailViewController(coder: coder, meteorite: selectedMeteorite)
-    }
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        return false
     }
     
     // MARK: - Filtering
