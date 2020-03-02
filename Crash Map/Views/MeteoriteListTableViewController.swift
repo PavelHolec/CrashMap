@@ -21,6 +21,7 @@ class MeteoriteListTableViewController: UITableViewController {
     // MARK: - IBOutlets
     @IBOutlet private var emptyTableView: UIView!
     @IBOutlet private var tableHeaderView: UIView!
+    @IBOutlet private var mapView: MKMapView!
     
     // MARK: - Configuration
     func configure(meteoriteService: MeteoriteService, filterSinceYear: Int) {
@@ -35,7 +36,7 @@ class MeteoriteListTableViewController: UITableViewController {
         setBaseFilter(toYear: filterSinceYear)
         enablePullToResfresh()
         
-        //navigationController?.navigationBar.largeTitleTextAttributes = []
+        mapView.setRegion(MKCoordinateRegion(MKMapRect.world), animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -83,8 +84,10 @@ class MeteoriteListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let gradientView = tableHeaderView.subviews[1] as! GradientView
-        gradientView.startColor = UIColor.systemBackground.withModified(alphaOffset: -1.0)
+        let gradientViewTop = tableHeaderView.subviews[1] as! GradientView
+        gradientViewTop.startColor = UIColor.systemBackground.withModified(alphaOffset: -1.0)
+        let gradientViewBottom = tableHeaderView.subviews[3] as! GradientView
+        gradientViewBottom.endColor = UIColor.systemBackground.withModified(alphaOffset: -1.0)
         return meteorites.count > 0 ? tableHeaderView : nil
     }
     

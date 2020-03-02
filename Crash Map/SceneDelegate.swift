@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             fatalError("API [NasaBaseURL] is missing from Keys.plist")
         }
         
-        guard let appToken = NSDictionary(contentsOfFile: keysPath)?.value(forKey: "NasaAppToken") as? String else {
+        guard let appToken = NSDictionary(contentsOfFile: keysPath)?.value(forKey: "NasaAppToken") as? String, appToken != "*REDACTED*" else {
             fatalError("API [NasaAppToken] is missing from Keys.plist")
         }
         

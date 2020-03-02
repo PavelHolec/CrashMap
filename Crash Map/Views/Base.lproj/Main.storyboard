@@ -11,14 +11,14 @@
         <!--Meteorites-->
         <scene sceneID="WaI-Kd-qtm">
             <objects>
-                <tableViewController definesPresentationContext="YES" id="Y5V-5h-drg" customClass="MeteoriteListTableViewController" customModule="Crash_Map" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" id="0nP-zd-fHa">
+                <tableViewController extendedLayoutIncludesOpaqueBars="YES" definesPresentationContext="YES" id="Y5V-5h-drg" customClass="MeteoriteListTableViewController" customModule="Crash_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0nP-zd-fHa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Meteorite Cell" id="EMK-Rh-TUy" customClass="MeteoriteListTableViewCell" customModule="Crash_Map" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="414" height="119.5"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="119.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EMK-Rh-TUy" id="lRQ-De-l6b">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
@@ -274,6 +274,7 @@
                     </refreshControl>
                     <connections>
                         <outlet property="emptyTableView" destination="Jcd-H2-tM0" id="no4-yN-EBU"/>
+                        <outlet property="mapView" destination="Kot-WY-su4" id="YK0-WY-OgA"/>
                         <outlet property="tableHeaderView" destination="vS5-7b-TkK" id="JDy-ua-h08"/>
                     </connections>
                 </tableViewController>
@@ -282,14 +283,20 @@
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Kot-WY-su4">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        </mapView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mqe-e9-4Ww">
+                            <rect key="frame" x="-1" y="-1" width="242" height="99"/>
+                            <subviews>
+                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Kot-WY-su4">
+                                    <rect key="frame" x="0.0" y="0.0" width="242" height="99"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </mapView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="up5-ex-ZNO" customClass="GradientView" customModule="Crash_Map" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="28" width="240" height="100"/>
+                            <rect key="frame" x="0.0" y="58" width="240" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="100" id="8ma-12-qq2"/>
+                                <constraint firstAttribute="height" constant="40" id="8ma-12-qq2"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="point" keyPath="startPoint">
@@ -314,16 +321,65 @@
                                     <real key="value" value="1"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="number" keyPath="middleLocation">
-                                    <real key="value" value="0.69999999999999996"/>
+                                    <real key="value" value="0.5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byd-xF-3PO" userLabel="Fill View">
+                            <rect key="frame" x="0.0" y="98" width="240" height="12"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="12" id="GTh-Ud-CbJ"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JXW-NB-XE8" customClass="GradientView" customModule="Crash_Map" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="110" width="240" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="18" id="gfP-VR-DqO"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="point" keyPath="startPoint">
+                                    <point key="value" x="0.0" y="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="point" keyPath="endPoint">
+                                    <point key="value" x="0.0" y="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                    <color key="value" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="middleColor">
+                                    <color key="value" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                    <color key="value" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="startLocation">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="endLocation">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="middleLocation">
+                                    <real key="value" value="0.5"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="up5-ex-ZNO" secondAttribute="bottom" id="7Fe-wV-IgC"/>
+                        <constraint firstAttribute="trailing" secondItem="Mqe-e9-4Ww" secondAttribute="trailing" constant="-1" id="8Is-gA-g6g"/>
+                        <constraint firstItem="byd-xF-3PO" firstAttribute="top" secondItem="up5-ex-ZNO" secondAttribute="bottom" id="8da-dW-HVk"/>
+                        <constraint firstAttribute="trailing" secondItem="JXW-NB-XE8" secondAttribute="trailing" id="MYH-WR-Wtu"/>
+                        <constraint firstItem="JXW-NB-XE8" firstAttribute="top" secondItem="byd-xF-3PO" secondAttribute="bottom" id="Nrg-kj-CW8"/>
+                        <constraint firstItem="Mqe-e9-4Ww" firstAttribute="top" secondItem="vS5-7b-TkK" secondAttribute="top" constant="-1" id="RJz-qc-QaP"/>
+                        <constraint firstAttribute="trailing" secondItem="byd-xF-3PO" secondAttribute="trailing" id="ZDf-aw-np5"/>
                         <constraint firstAttribute="trailing" secondItem="up5-ex-ZNO" secondAttribute="trailing" id="dmy-0Z-ZNV"/>
+                        <constraint firstAttribute="bottom" secondItem="JXW-NB-XE8" secondAttribute="bottom" id="fvA-Ry-jm2"/>
+                        <constraint firstItem="byd-xF-3PO" firstAttribute="top" secondItem="Mqe-e9-4Ww" secondAttribute="bottom" id="h4F-ZT-KZa"/>
                         <constraint firstItem="up5-ex-ZNO" firstAttribute="leading" secondItem="vS5-7b-TkK" secondAttribute="leading" id="lzw-ki-H05"/>
+                        <constraint firstItem="byd-xF-3PO" firstAttribute="leading" secondItem="vS5-7b-TkK" secondAttribute="leading" id="moJ-a6-oF5"/>
+                        <constraint firstItem="Mqe-e9-4Ww" firstAttribute="leading" secondItem="vS5-7b-TkK" secondAttribute="leading" constant="-1" id="vJE-Zk-0dn"/>
+                        <constraint firstItem="JXW-NB-XE8" firstAttribute="leading" secondItem="vS5-7b-TkK" secondAttribute="leading" id="wRd-zU-yOR"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" id="Jcd-H2-tM0">
@@ -411,19 +467,19 @@
             <color red="0.33782079819999999" green="0.40967223050000001" blue="0.78694355490000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ClassIron">
-            <color red="0.33782079819999999" green="0.40967223050000001" blue="0.78694355490000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.33799999952316284" green="0.40999999642372131" blue="0.78700000047683716" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TableCellBackground1">
-            <color red="0.50654464960000001" green="0.77750378850000001" blue="0.90982407330000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.50700002908706665" green="0.77799999713897705" blue="0.9100000262260437" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="TableCellBackground2">
-            <color red="1" green="0.99428725060000001" blue="0.97999999999999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="1" green="0.99400001764297485" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="TableCellBackground3">
-            <color red="1" green="0.68233313299999998" blue="0.6702506385" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.68199998140335083" blue="0.67000001668930054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TableCellSelected">
-            <color red="0.28440305593922655" green="0.73027360142576425" blue="0.94801018646408841" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.28400000929832458" green="0.73000001907348633" blue="0.94800001382827759" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
     <color key="tintColor" name="ClassIron"/>
