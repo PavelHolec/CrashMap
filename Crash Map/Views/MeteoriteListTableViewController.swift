@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import MapKit
 
 class MeteoriteListTableViewController: UITableViewController {
     
@@ -19,6 +20,7 @@ class MeteoriteListTableViewController: UITableViewController {
     
     // MARK: - IBOutlets
     @IBOutlet private var emptyTableView: UIView!
+    @IBOutlet private var tableHeaderView: UIView!
     
     // MARK: - Configuration
     func configure(meteoriteService: MeteoriteService, filterSinceYear: Int) {
@@ -32,6 +34,8 @@ class MeteoriteListTableViewController: UITableViewController {
         addSearchController()
         setBaseFilter(toYear: filterSinceYear)
         enablePullToResfresh()
+        
+        //navigationController?.navigationBar.largeTitleTextAttributes = []
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -78,6 +82,16 @@ class MeteoriteListTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let gradientView = tableHeaderView.subviews[1] as! GradientView
+        gradientView.startColor = UIColor.systemBackground.withModified(alphaOffset: -1.0)
+        return meteorites.count > 0 ? tableHeaderView : nil
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return meteorites.count > 0 ? tableView.bounds.height * 0.3 : 0
+    }
+    
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return meteorites.count > 0 ? nil : emptyTableView
     }
@@ -117,6 +131,7 @@ class MeteoriteListTableViewController: UITableViewController {
                     self.allMeteorites = meteorites
                 }
                 
+                self.navigationItem.title = "\(self.allMeteorites.count) Meteorites"
                 self.filteredMeteorites = []
                 self.refreshControl!.endRefreshing()
                 self.tableView.reloadData()

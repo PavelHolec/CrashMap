@@ -16,21 +16,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meteorite" translatesAutoresizingMaskIntoConstraints="NO" id="moT-Ix-yXM">
-                                <rect key="frame" x="107" y="298" width="200" height="200"/>
+                                <rect key="frame" x="57" y="248" width="300" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="TSg-36-ouV"/>
-                                    <constraint firstAttribute="height" constant="200" id="y3c-1G-NaP"/>
+                                    <constraint firstAttribute="width" constant="300" id="TSg-36-ouV"/>
+                                    <constraint firstAttribute="height" constant="300" id="y3c-1G-NaP"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crash Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wIr-K3-lPq">
-                                <rect key="frame" x="127.5" y="448" width="159" height="41"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <rect key="frame" x="88.5" y="448" width="237" height="55"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="46"/>
+                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="wIr-K3-lPq" firstAttribute="top" secondItem="moT-Ix-yXM" secondAttribute="bottom" constant="-50" id="7mh-3r-DfC"/>
+                            <constraint firstItem="wIr-K3-lPq" firstAttribute="top" secondItem="moT-Ix-yXM" secondAttribute="bottom" constant="-100" id="7mh-3r-DfC"/>
                             <constraint firstItem="moT-Ix-yXM" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="OVY-x9-Hp1"/>
                             <constraint firstItem="wIr-K3-lPq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="RLp-dQ-qSd"/>
                             <constraint firstItem="moT-Ix-yXM" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-50" id="Upy-Pq-fOh"/>

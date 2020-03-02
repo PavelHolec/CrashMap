@@ -12,20 +12,20 @@
         <scene sceneID="WaI-Kd-qtm">
             <objects>
                 <tableViewController definesPresentationContext="YES" id="Y5V-5h-drg" customClass="MeteoriteListTableViewController" customModule="Crash_Map" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="-1" id="0nP-zd-fHa">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" id="0nP-zd-fHa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Meteorite Cell" id="EMK-Rh-TUy" customClass="MeteoriteListTableViewCell" customModule="Crash_Map" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="414" height="119"/>
+                                <rect key="frame" x="0.0" y="55.5" width="414" height="119.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EMK-Rh-TUy" id="lRQ-De-l6b">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="119"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="XOm-2s-0Zh">
-                                            <rect key="frame" x="24" y="46" width="33" height="27"/>
+                                            <rect key="frame" x="24" y="46.5" width="33" height="27"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" text="1990" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uX4-2K-oTE">
                                                     <rect key="frame" x="6.5" y="0.0" width="26.5" height="13.5"/>
@@ -42,14 +42,14 @@
                                             </subviews>
                                         </stackView>
                                         <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="huA-Xf-dRq" userLabel="Line">
-                                            <rect key="frame" x="71" y="0.0" width="1" height="55"/>
+                                            <rect key="frame" x="71" y="0.0" width="1" height="55.5"/>
                                             <color key="backgroundColor" systemColor="quaternaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="1" id="OUh-cc-fGB"/>
                                             </constraints>
                                         </view>
                                         <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNL-GQ-FBQ" userLabel="Dot">
-                                            <rect key="frame" x="69" y="57" width="5" height="5"/>
+                                            <rect key="frame" x="69" y="57.5" width="5" height="5"/>
                                             <color key="backgroundColor" systemColor="quaternaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="5" id="Dov-gj-p9I"/>
@@ -62,35 +62,35 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UxL-6i-1S8" userLabel="Line">
-                                            <rect key="frame" x="71" y="64" width="1" height="55"/>
+                                            <rect key="frame" x="71" y="64.5" width="1" height="55"/>
                                             <color key="backgroundColor" systemColor="quaternaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="1" id="CfB-sc-BYd"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c9E-X4-lhJ">
-                                            <rect key="frame" x="90" y="10" width="304" height="97"/>
+                                            <rect key="frame" x="90" y="10" width="304" height="97.5"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                     <integer key="value" value="6"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
-                                                    <integer key="value" value="6"/>
+                                                    <integer key="value" value="5"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
-                                                    <real key="value" value="0.10000000000000001"/>
+                                                    <real key="value" value="0.23999999999999999"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
                                                     <size key="value" width="0.0" height="2.5"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NKD-af-luh" userLabel="Content View">
-                                            <rect key="frame" x="90" y="10" width="304" height="97"/>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NKD-af-luh">
+                                            <rect key="frame" x="90" y="10" width="304" height="97.5"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DgZ-Yy-1NU" customClass="GradientView" customModule="Crash_Map" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="97"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="97.5"/>
                                                     <color key="backgroundColor" name="TableCellBackground1"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="startColor">
@@ -120,7 +120,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" image="meteorite" translatesAutoresizingMaskIntoConstraints="NO" id="oiJ-Jm-6fV">
-                                                    <rect key="frame" x="39" y="-168" width="500" height="500"/>
+                                                    <rect key="frame" x="39" y="-167.5" width="500" height="500"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="oiJ-Jm-6fV" secondAttribute="height" multiplier="1:1" id="AgD-Qm-Lqp"/>
                                                         <constraint firstAttribute="width" constant="500" id="Ara-8o-Gzf"/>
@@ -128,28 +128,60 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="107g" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDe-BN-KSq">
-                                                    <rect key="frame" x="239" y="75.5" width="25" height="13.5"/>
+                                                    <rect key="frame" x="239" y="76" width="25" height="13.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C9J-pk-SCL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="97"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="97.5"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="nDm-EI-dTb">
-                                                            <rect key="frame" x="12" y="10" width="280" height="79"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="nDm-EI-dTb">
+                                                            <rect key="frame" x="12" y="10" width="280" height="79.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Meteorite Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cy-kV-NjX">
                                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="20.5"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                                    <nil key="textColor"/>
+                                                                    <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acapulcoite" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0G-Qc-DTq" customClass="RoundedLabel" customModule="Crash_Map" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="26.5" width="61.5" height="13.5"/>
-                                                                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mxh-oc-OM8">
+                                                                    <rect key="frame" x="0.0" y="24.5" width="166.5" height="13.5"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acapulcoite" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0G-Qc-DTq" customClass="RoundedLabel" customModule="Crash_Map" customModuleProvider="target">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="61.5" height="13.5"/>
+                                                                            <color key="backgroundColor" name="ClassIron"/>
+                                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                                                            <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                            <userDefinedRuntimeAttributes>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                    <real key="value" value="2"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="insets">
+                                                                                    <real key="value" value="2"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                            </userDefinedRuntimeAttributes>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kXU-mw-N6E">
+                                                                            <rect key="frame" x="69.5" y="0.0" width="97" height="13.5"/>
+                                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uay-mm-54E" userLabel="Spacer">
+                                                                    <rect key="frame" x="0.0" y="42" width="50" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20" id="fgj-01-VNi"/>
+                                                                    </constraints>
+                                                                </view>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="5927472" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZR-eI-Kzl" customClass="RoundedLabel" customModule="Crash_Map" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="66" width="47" height="13.5"/>
+                                                                    <color key="backgroundColor" name="TableCellSelected"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                    <color key="textColor" name="TableCellBackground1"/>
                                                                     <nil key="highlightedColor"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -159,18 +191,6 @@
                                                                             <real key="value" value="2"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Unknown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kXU-mw-N6E">
-                                                                    <rect key="frame" x="0.0" y="46" width="97" height="13.5"/>
-                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="5927472" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZR-eI-Kzl">
-                                                                    <rect key="frame" x="0.0" y="65.5" width="47" height="13.5"/>
-                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                                                    <color key="textColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
@@ -224,11 +244,13 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
+                                    <outlet property="cardView" destination="NKD-af-luh" id="vjz-48-Nzq"/>
                                     <outlet property="classLabel" destination="v0G-Qc-DTq" id="bO1-51-Jbs"/>
                                     <outlet property="foundLabel" destination="3ba-U9-7cC" id="ECn-Ib-EiG"/>
                                     <outlet property="gradientView" destination="DgZ-Yy-1NU" id="1jr-Xo-Op0"/>
                                     <outlet property="idLabel" destination="AZR-eI-Kzl" id="OrS-0D-zcW"/>
                                     <outlet property="locationUnknownLabel" destination="kXU-mw-N6E" id="pkP-GA-OcL"/>
+                                    <outlet property="locationUnknownSpacerHeightConstraint" destination="fgj-01-VNi" id="0OF-B1-B6r"/>
                                     <outlet property="massLabel" destination="KDe-BN-KSq" id="kI6-iy-z3O"/>
                                     <outlet property="massLabelTrailingConstraint" destination="LNC-10-CbG" id="grr-Bc-Id3"/>
                                     <outlet property="meteoriteImageView" destination="oiJ-Jm-6fV" id="fv8-hO-vmW"/>
@@ -252,9 +274,58 @@
                     </refreshControl>
                     <connections>
                         <outlet property="emptyTableView" destination="Jcd-H2-tM0" id="no4-yN-EBU"/>
+                        <outlet property="tableHeaderView" destination="vS5-7b-TkK" id="JDy-ua-h08"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J79-qR-zvX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="vS5-7b-TkK">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Kot-WY-su4">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </mapView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="up5-ex-ZNO" customClass="GradientView" customModule="Crash_Map" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="28" width="240" height="100"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="8ma-12-qq2"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="point" keyPath="startPoint">
+                                    <point key="value" x="0.0" y="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="point" keyPath="endPoint">
+                                    <point key="value" x="0.0" y="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                    <color key="value" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="middleColor">
+                                    <color key="value" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                    <color key="value" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="startLocation">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="endLocation">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="middleLocation">
+                                    <real key="value" value="0.69999999999999996"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="up5-ex-ZNO" secondAttribute="bottom" id="7Fe-wV-IgC"/>
+                        <constraint firstAttribute="trailing" secondItem="up5-ex-ZNO" secondAttribute="trailing" id="dmy-0Z-ZNV"/>
+                        <constraint firstItem="up5-ex-ZNO" firstAttribute="leading" secondItem="vS5-7b-TkK" secondAttribute="leading" id="lzw-ki-H05"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" id="Jcd-H2-tM0">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -316,6 +387,13 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="qD8-RK-0Og">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="ClassIron"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" name="ClassIron"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -329,14 +407,24 @@
     </scenes>
     <resources>
         <image name="meteorite" width="500" height="500"/>
+        <namedColor name="ClassIron">
+            <color red="0.33782079819999999" green="0.40967223050000001" blue="0.78694355490000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ClassIron">
+            <color red="0.33782079819999999" green="0.40967223050000001" blue="0.78694355490000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="TableCellBackground1">
-            <color red="0.85399997234344482" green="0.89399999380111694" blue="0.97000002861022949" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.50654464960000001" green="0.77750378850000001" blue="0.90982407330000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="TableCellBackground2">
-            <color red="0.99500000476837158" green="0.97200000286102295" blue="0.94300001859664917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="1" green="0.99428725060000001" blue="0.97999999999999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="TableCellBackground3">
-            <color red="0.81300002336502075" green="0.8970000147819519" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="1" green="0.68233313299999998" blue="0.6702506385" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TableCellSelected">
+            <color red="0.28440305593922655" green="0.73027360142576425" blue="0.94801018646408841" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
+    <color key="tintColor" name="ClassIron"/>
 </document>

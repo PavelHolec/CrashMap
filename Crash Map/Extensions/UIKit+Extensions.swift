@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 extension UIColor {
-    public func withModified(hueOffset: CGFloat = 0, saturationOffset: CGFloat = 0, brightnessOffset: CGFloat = 0) -> UIColor {
+    public func withModified(hueOffset: CGFloat = 0, saturationOffset: CGFloat = 0, brightnessOffset: CGFloat = 0, alphaOffset: CGFloat = 0) -> UIColor {
 
         var currentHue: CGFloat = 0.0
         var currentSaturation: CGFloat = 0.0
@@ -13,7 +13,7 @@ extension UIColor {
             return UIColor(hue: (hueOffset + currentHue).clamped,
                            saturation: (saturationOffset + currentSaturation).clamped,
                            brightness: (brightnessOffset + currentBrigthness).clamped,
-                       alpha: currentAlpha)
+                           alpha: (alphaOffset + currentAlpha).clamped)
         } else {
             return self
         }

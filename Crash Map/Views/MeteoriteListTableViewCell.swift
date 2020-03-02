@@ -1,5 +1,7 @@
 import UIKit
 
+fileprivate let cardPushedAffineTransform = CGAffineTransform(scaleX: 0.97, y: 0.97).translatedBy(x: 0, y: -5)
+
 class MeteoriteListTableViewCell: UITableViewCell {
     
     private var selectedColor: UIColor?
@@ -9,12 +11,14 @@ class MeteoriteListTableViewCell: UITableViewCell {
     @IBOutlet weak var foundLabel: UILabel!
     
     @IBOutlet weak var shadowView: UIView!
+    @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var gradientView: GradientView!
     @IBOutlet weak var meteoriteImageView: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var classLabel: UILabel!
     @IBOutlet weak var locationUnknownLabel: UILabel!
+    @IBOutlet weak var locationUnknownSpacerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var idLabel: UILabel!
     
     @IBOutlet weak var massLabel: UILabel!
@@ -33,8 +37,18 @@ class MeteoriteListTableViewCell: UITableViewCell {
         if selected {
             selectedColor = gradientView.startColor
             gradientView.startColor = UIColor(named: "TableCellSelected")!
+            UIView.animate(withDuration: 0.2) {
+                self.cardView.transform = cardPushedAffineTransform
+                self.shadowView.transform = cardPushedAffineTransform
+                self.shadowView.alpha = 0.0
+            }
         } else if let selectedColor = selectedColor {
             gradientView.startColor = selectedColor
+            UIView.animate(withDuration: 0.2) {
+                self.cardView.transform = .identity
+                self.shadowView.transform = .identity
+                self.shadowView.alpha = 1.0
+            }
         }
     }
     
@@ -69,8 +83,15 @@ class MeteoriteListTableViewCell: UITableViewCell {
         gradientView.endLocation = middleLocation + 0.1
         
         gradientView.startColor = UIColor(named: "TableCellBackground1")!
-            .withModified(saturationOffset: relativeMass * 0.2,
-                          brightnessOffset: -relativeMass * 0.03)
+            .withModified(saturationOffset: relativeMass * 0.02,
+                          brightnessOffset: -relativeMass * 0.01)
+        
+        idLabel.backgroundColor = gradientView.startColor
+            .withModified(saturationOffset: -0.2,
+                          brightnessOffset: 0.2)
+        idLabel.textColor = gradientView.startColor
+            .withModified(saturationOffset: -0.1,
+                          brightnessOffset: -0.15)
         
         gradientView.middleColor = UIColor(named: "TableCellBackground2")!
             .withModified(saturationOffset: relativeMass * 0.2)
@@ -78,22 +99,40 @@ class MeteoriteListTableViewCell: UITableViewCell {
     
     private func setEnabledState(forCoordinates coordinates: Coordinates?) {
         guard let coordinates = coordinates, coordinates.isRangeValid else {
-            nameLabel.alpha = 0.3
-            classLabel.alpha = 0.4
-            locationUnknownLabel.alpha = 1.0
-            massLabel.alpha = 0.3
+//            nameLabel.alpha = 0.5
+//            classLabel.alpha = 0.5
+//
+//            massLabel.alpha = 0.5
+//            shadowView.alpha = 0.0
+//            meteoriteImageView.alpha = 0.5
+//            locationUnknownSpacerHeightConstraint.constant = 0
+//            locationUnknownContentTrailingConstraint.constant = 23
+//
+
             shadowView.alpha = 0.0
-            meteoriteImageView.alpha = 0.5
+            cardView.alpha = 0.6
+            cardView.transform = cardPushedAffineTransform
+            locationUnknownLabel.alpha = 1.0
+            locationUnknownSpacerHeightConstraint.constant = 0
             isUserInteractionEnabled = false
             return
         }
         
-        nameLabel.alpha = 1.0
-        classLabel.alpha = 1.0
-        locationUnknownLabel.alpha = 0.0
-        massLabel.alpha = 1.0
+//        nameLabel.alpha = 1.0
+//        classLabel.alpha = 1.0
+//
+//        massLabel.alpha = 1.0
+//
+//        meteoriteImageView.alpha = 1.0
+
+//        locationUnknownContentTrailingConstraint.constant = 20
+//
+        
         shadowView.alpha = 1.0
-        meteoriteImageView.alpha = 1.0
+        cardView.alpha = 1.0
+        cardView.transform = .identity
+        locationUnknownLabel.alpha = 0.0
+        locationUnknownSpacerHeightConstraint.constant = 18
         isUserInteractionEnabled = true
     }
 }
