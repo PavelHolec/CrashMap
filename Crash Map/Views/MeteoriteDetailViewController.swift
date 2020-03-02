@@ -41,10 +41,6 @@ class MeteoriteDetailViewController: UIViewController {
     }
     
     func addMeteoriteAnnotation() {
-        let annotation = MKPointAnnotation()
-        annotation.title = meteorite.yearTitle
-        annotation.subtitle = meteorite.fallTitle
-        annotation.coordinate = location
-        mapView.addAnnotation(annotation)
+        mapView.addAnnotation(meteorite.mapAnnotation!)
     }
 }

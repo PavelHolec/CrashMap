@@ -44,6 +44,12 @@ class MeteoriteListTableViewController: UITableViewController {
         reloadData()
     }
     
+    func refresh() {
+        self.mapView.removeAnnotations(self.mapView.annotations)
+        self.mapView.addAnnotations(meteorites.compactMap { $0.mapAnnotation })
+        self.tableView.reloadData()
+    }
+    
     // MARK: - TableView
     override func numberOfSections(in tableView: UITableView) -> Int {
         1
@@ -137,9 +143,9 @@ class MeteoriteListTableViewController: UITableViewController {
                 self.navigationItem.title = "\(self.allMeteorites.count) Meteorites"
                 self.filteredMeteorites = []
                 self.refreshControl!.endRefreshing()
-                self.tableView.reloadData()
+                
+                self.refresh()
             }
         }
     }
 }
-

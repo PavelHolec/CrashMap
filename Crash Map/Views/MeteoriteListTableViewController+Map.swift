@@ -4,7 +4,7 @@ import MapKit
 
 fileprivate let reusableAnnotationIdentifier = "meteoriteAnnotation"
 
-extension MeteoriteDetailViewController: MKMapViewDelegate {
+extension MeteoriteListTableViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reusableAnnotationIdentifier) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: reusableAnnotationIdentifier)

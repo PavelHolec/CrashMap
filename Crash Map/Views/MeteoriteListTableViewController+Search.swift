@@ -41,7 +41,7 @@ extension MeteoriteListTableViewController: UISearchResultsUpdating {
         })
         
         setFilteredMeteoritesTo(filteredMeteorites)
-        tableView.reloadData()
+        refresh()
     }
 }
 
