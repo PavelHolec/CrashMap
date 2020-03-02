@@ -7,13 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E90010FF240BFE20007D2EF9 /* MeteoriteDetailViewController+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90010FE240BFE20007D2EF9 /* MeteoriteDetailViewController+Map.swift */; };
+		E902A949240CEC3C004CB632 /* Meteorite+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E902A948240CEC3C004CB632 /* Meteorite+Extensions.swift */; };
+		E902A94B240CEE63004CB632 /* MeteoriteListTableViewController+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = E902A94A240CEE63004CB632 /* MeteoriteListTableViewController+Map.swift */; };
+		E99719972406D227005195B7 /* MeteoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99719962406D227005195B7 /* MeteoriteService.swift */; };
+		E99719992406D4E1005195B7 /* MeteoriteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99719982406D4E1005195B7 /* MeteoriteDetailViewController.swift */; };
+		E997199B2406D7FF005195B7 /* Meteorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E997199A2406D7FF005195B7 /* Meteorite.swift */; };
+		E997199D2406EFA2005195B7 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E997199C2406EFA2005195B7 /* Keys.plist */; };
+		E99ED88A240847D000527741 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99ED889240847D000527741 /* Foundation+Extensions.swift */; };
+		E99ED88C2408F6D600527741 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99ED88B2408F6D600527741 /* GradientView.swift */; };
+		E99ED88E240A90D300527741 /* UIKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99ED88D240A90D300527741 /* UIKit+Extensions.swift */; };
+		E99ED890240BCDCE00527741 /* RoundedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99ED88F240BCDCE00527741 /* RoundedLabel.swift */; };
+		E99ED894240BD07700527741 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E99ED893240BD07700527741 /* Colors.xcassets */; };
+		E99ED896240BD21F00527741 /* MeteoriteListTableViewController+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99ED895240BD21F00527741 /* MeteoriteListTableViewController+Search.swift */; };
 		E9FB3D9D2406B04400569BDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB3D9C2406B04400569BDB /* AppDelegate.swift */; };
 		E9FB3D9F2406B04400569BDB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB3D9E2406B04400569BDB /* SceneDelegate.swift */; };
-		E9FB3DA12406B04400569BDB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB3DA02406B04400569BDB /* ViewController.swift */; };
 		E9FB3DA42406B04400569BDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FB3DA22406B04400569BDB /* Main.storyboard */; };
 		E9FB3DA62406B04800569BDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9FB3DA52406B04800569BDB /* Assets.xcassets */; };
 		E9FB3DA92406B04800569BDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FB3DA72406B04800569BDB /* LaunchScreen.storyboard */; };
 		E9FB3DB42406B04800569BDB /* Crash_MapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB3DB32406B04800569BDB /* Crash_MapUITests.swift */; };
+		E9FB3DBF2406B19F00569BDB /* MeteoriteListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB3DBE2406B19F00569BDB /* MeteoriteListTableViewController.swift */; };
+		E9FB3DC22406C27E00569BDB /* MeteoriteListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB3DC12406C27E00569BDB /* MeteoriteListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,10 +41,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E90010FE240BFE20007D2EF9 /* MeteoriteDetailViewController+Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MeteoriteDetailViewController+Map.swift"; sourceTree = "<group>"; };
+		E902A948240CEC3C004CB632 /* Meteorite+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meteorite+Extensions.swift"; sourceTree = "<group>"; };
+		E902A94A240CEE63004CB632 /* MeteoriteListTableViewController+Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MeteoriteListTableViewController+Map.swift"; sourceTree = "<group>"; };
+		E99719962406D227005195B7 /* MeteoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteService.swift; sourceTree = "<group>"; };
+		E99719982406D4E1005195B7 /* MeteoriteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteoriteDetailViewController.swift; sourceTree = "<group>"; };
+		E997199A2406D7FF005195B7 /* Meteorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meteorite.swift; sourceTree = "<group>"; };
+		E997199C2406EFA2005195B7 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		E99ED889240847D000527741 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
+		E99ED88B2408F6D600527741 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		E99ED88D240A90D300527741 /* UIKit+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+Extensions.swift"; sourceTree = "<group>"; };
+		E99ED88F240BCDCE00527741 /* RoundedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedLabel.swift; sourceTree = "<group>"; };
+		E99ED893240BD07700527741 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		E99ED895240BD21F00527741 /* MeteoriteListTableViewController+Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MeteoriteListTableViewController+Search.swift"; sourceTree = "<group>"; };
 		E9FB3D992406B04400569BDB /* Crash Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crash Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FB3D9C2406B04400569BDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9FB3D9E2406B04400569BDB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E9FB3DA02406B04400569BDB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E9FB3DA32406B04400569BDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9FB3DA52406B04800569BDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9FB3DA82406B04800569BDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +64,8 @@
 		E9FB3DAF2406B04800569BDB /* Crash MapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Crash MapUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FB3DB32406B04800569BDB /* Crash_MapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crash_MapUITests.swift; sourceTree = "<group>"; };
 		E9FB3DB52406B04800569BDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9FB3DBE2406B19F00569BDB /* MeteoriteListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteListTableViewController.swift; sourceTree = "<group>"; };
+		E9FB3DC12406C27E00569BDB /* MeteoriteListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +86,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E902A947240CEC27004CB632 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E902A948240CEC3C004CB632 /* Meteorite+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E99719952406D1D3005195B7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E99719962406D227005195B7 /* MeteoriteService.swift */,
+				E997199A2406D7FF005195B7 /* Meteorite.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E99ED886240831DB00527741 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				E99ED88B2408F6D600527741 /* GradientView.swift */,
+				E99ED88F240BCDCE00527741 /* RoundedLabel.swift */,
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
+		E99ED891240BD04600527741 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E99ED889240847D000527741 /* Foundation+Extensions.swift */,
+				E99ED88D240A90D300527741 /* UIKit+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E99ED892240BD05C00527741 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E9FB3DA52406B04800569BDB /* Assets.xcassets */,
+				E99ED893240BD07700527741 /* Colors.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		E9FB3D902406B04400569BDB = {
 			isa = PBXGroup;
 			children = (
@@ -79,13 +151,14 @@
 		E9FB3D9B2406B04400569BDB /* Crash Map */ = {
 			isa = PBXGroup;
 			children = (
+				E99ED892240BD05C00527741 /* Resources */,
+				E99ED891240BD04600527741 /* Extensions */,
+				E99719952406D1D3005195B7 /* Models */,
+				E9FB3DC02406C23A00569BDB /* Views */,
 				E9FB3D9C2406B04400569BDB /* AppDelegate.swift */,
 				E9FB3D9E2406B04400569BDB /* SceneDelegate.swift */,
-				E9FB3DA02406B04400569BDB /* ViewController.swift */,
-				E9FB3DA22406B04400569BDB /* Main.storyboard */,
-				E9FB3DA52406B04800569BDB /* Assets.xcassets */,
-				E9FB3DA72406B04800569BDB /* LaunchScreen.storyboard */,
 				E9FB3DAA2406B04800569BDB /* Info.plist */,
+				E997199C2406EFA2005195B7 /* Keys.plist */,
 			);
 			path = "Crash Map";
 			sourceTree = "<group>";
@@ -97,6 +170,23 @@
 				E9FB3DB52406B04800569BDB /* Info.plist */,
 			);
 			path = "Crash MapUITests";
+			sourceTree = "<group>";
+		};
+		E9FB3DC02406C23A00569BDB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E902A947240CEC27004CB632 /* Extensions */,
+				E99ED886240831DB00527741 /* Reusable */,
+				E9FB3DA72406B04800569BDB /* LaunchScreen.storyboard */,
+				E9FB3DA22406B04400569BDB /* Main.storyboard */,
+				E9FB3DBE2406B19F00569BDB /* MeteoriteListTableViewController.swift */,
+				E99ED895240BD21F00527741 /* MeteoriteListTableViewController+Search.swift */,
+				E902A94A240CEE63004CB632 /* MeteoriteListTableViewController+Map.swift */,
+				E9FB3DC12406C27E00569BDB /* MeteoriteListTableViewCell.swift */,
+				E99719982406D4E1005195B7 /* MeteoriteDetailViewController.swift */,
+				E90010FE240BFE20007D2EF9 /* MeteoriteDetailViewController+Map.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,7 +270,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E99ED894240BD07700527741 /* Colors.xcassets in Resources */,
 				E9FB3DA92406B04800569BDB /* LaunchScreen.storyboard in Resources */,
+				E997199D2406EFA2005195B7 /* Keys.plist in Resources */,
 				E9FB3DA62406B04800569BDB /* Assets.xcassets in Resources */,
 				E9FB3DA42406B04400569BDB /* Main.storyboard in Resources */,
 			);
@@ -200,9 +292,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9FB3DA12406B04400569BDB /* ViewController.swift in Sources */,
+				E902A94B240CEE63004CB632 /* MeteoriteListTableViewController+Map.swift in Sources */,
+				E99719992406D4E1005195B7 /* MeteoriteDetailViewController.swift in Sources */,
+				E9FB3DC22406C27E00569BDB /* MeteoriteListTableViewCell.swift in Sources */,
+				E99ED88C2408F6D600527741 /* GradientView.swift in Sources */,
 				E9FB3D9D2406B04400569BDB /* AppDelegate.swift in Sources */,
+				E99719972406D227005195B7 /* MeteoriteService.swift in Sources */,
 				E9FB3D9F2406B04400569BDB /* SceneDelegate.swift in Sources */,
+				E99ED890240BCDCE00527741 /* RoundedLabel.swift in Sources */,
+				E90010FF240BFE20007D2EF9 /* MeteoriteDetailViewController+Map.swift in Sources */,
+				E902A949240CEC3C004CB632 /* Meteorite+Extensions.swift in Sources */,
+				E99ED88E240A90D300527741 /* UIKit+Extensions.swift in Sources */,
+				E9FB3DBF2406B19F00569BDB /* MeteoriteListTableViewController.swift in Sources */,
+				E997199B2406D7FF005195B7 /* Meteorite.swift in Sources */,
+				E99ED896240BD21F00527741 /* MeteoriteListTableViewController+Search.swift in Sources */,
+				E99ED88A240847D000527741 /* Foundation+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +398,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -348,7 +452,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
