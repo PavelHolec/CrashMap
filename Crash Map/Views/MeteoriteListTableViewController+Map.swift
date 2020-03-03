@@ -48,11 +48,6 @@ extension MeteoriteListTableViewController: MKMapViewDelegate {
         
         DispatchQueue.main.async {
             let indexPath = IndexPath(row: selectedIndex, section: 0)
-            
-//            if let cell = self.tableView.cellForRow(at: indexPath) as? MeteoriteListTableViewCell {
-//                cell.setSelected(true, animated: true)
-//            }
-            
             self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
             self.scrollRowToVisible(at: indexPath)
         }

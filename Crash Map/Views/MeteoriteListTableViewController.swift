@@ -133,11 +133,11 @@ class MeteoriteListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return meteorites.count > 0 ? tableHeaderView : nil
+        meteorites.count > 0 ? tableHeaderView : nil
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return meteorites.count > 0 ? tableHeaderHeight : 0
+        meteorites.count > 0 ? tableHeaderHeight : 0
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -146,7 +146,7 @@ class MeteoriteListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return meteorites.count > 0 ? 0 : tableView.bounds.height * 0.6
+        meteorites.count > 0 ? 0 : tableView.bounds.height * 0.6
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {

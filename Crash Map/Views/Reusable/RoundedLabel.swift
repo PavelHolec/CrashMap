@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 
+/// Label with rounded corners and padding
 @IBDesignable class RoundedLabel: UILabel
 {
     @IBInspectable var cornerRadius: CGFloat = 1 {
@@ -29,6 +30,11 @@ import UIKit
         sharedInit()
     }
     
+    func sharedInit() {
+        clipsToBounds = true
+        layer.cornerRadius = cornerRadius
+    }
+    
     override func drawText(in rect: CGRect) {
         let edgeInsets = UIEdgeInsets.init(top: insets,
                                            left: floor(insets * 1.5),
@@ -41,10 +47,5 @@ import UIKit
         let size = super.intrinsicContentSize
         return CGSize(width: ceil(size.width + insets * 3),
                       height: ceil(size.height))
-    }
-    
-    func sharedInit() {
-        clipsToBounds = true
-        layer.cornerRadius = cornerRadius
     }
 }
