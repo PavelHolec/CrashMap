@@ -116,11 +116,11 @@ class MeteoriteListTableViewCell: UITableViewCell {
         self.meteorite = meteorite
         
         nameLabel.text = meteorite.name
-        accessibilityLabel = meteorite.name
+        accessibilityLabel = "\(meteorite.name) meteorite, \(meteorite.yearTitle), \(meteorite.fallTitle)"
         yearLabel.text = meteorite.yearTitle
         foundLabel.text = meteorite.fallTitle
         idLabel.text = meteorite.idTitle
-        accessibilityIdentifier = meteorite.idTitle
+        accessibilityIdentifier = "cell_\(meteorite.id)"
         
         massLabel.text = meteorite.massTitle
         classLabel.text = meteorite.class

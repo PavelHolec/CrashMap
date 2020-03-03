@@ -19,6 +19,7 @@ extension Meteorite {
         
         let annotation = Annotation(withId: id)
         annotation.title = name
+        annotation.accessibilityLabel = name
         annotation.subtitle = "\(yearTitle), \(fallTitle)"
         annotation.coordinate = CLLocationCoordinate2D(latitude: coordinates.lat,
                                                        longitude: coordinates.lon)
