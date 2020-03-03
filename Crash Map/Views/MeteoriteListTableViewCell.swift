@@ -39,22 +39,15 @@ class MeteoriteListTableViewCell: UITableViewCell {
     func setCustomHighlighted(_ highlighted: Bool, animated: Bool) {
         if highlighted {
             if animated {
-                UIView.animate(withDuration: 0.4,
-                               delay: 0,
-                               usingSpringWithDamping: 0.3,
-                               initialSpringVelocity: 5,
-                               options: .curveEaseOut,
-                               animations: {
-                    self.setHighlightedStyle()
-                }, completion: nil)
+                UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.3,
+                               initialSpringVelocity: 5, options: .curveEaseOut,
+                               animations: setHighlightedStyle, completion: nil)
             } else {
                 self.setHighlightedStyle()
             }
         } else {
             if animated {
-                UIView.animate(withDuration: 0.3) {
-                    self.setNormalStyle()
-                }
+                UIView.animate(withDuration: 0.3, animations: setNormalStyle)
             } else {
                 self.setNormalStyle()
             }
@@ -66,22 +59,15 @@ class MeteoriteListTableViewCell: UITableViewCell {
         
         if selected {
             if animated {
-                UIView.animate(withDuration: 0.4,
-                               delay: 0,
-                               usingSpringWithDamping: 0.3,
-                               initialSpringVelocity: 5,
-                               options: .curveEaseOut,
-                               animations: {
-                    self.setSelectedStyle()
-                }, completion: nil)
+                UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.3,
+                               initialSpringVelocity: 5, options: .curveEaseOut,
+                               animations: setSelectedStyle, completion: nil)
             } else {
                 self.setSelectedStyle()
             }
         } else {
             if animated {
-                UIView.animate(withDuration: 0.3) {
-                    self.setNormalStyle()
-                }
+                UIView.animate(withDuration: 0.3, animations: setNormalStyle)
             } else {
                 self.setNormalStyle()
             }
@@ -122,15 +108,19 @@ class MeteoriteListTableViewCell: UITableViewCell {
         dotView.backgroundColor = .quaternaryLabel
         dotView.layer.cornerRadius = 4
         setIdColors()
+        
+        setEnabledOrDisabledState()
     }
     
     func configure(meteorite: Meteorite) {
         self.meteorite = meteorite
         
         nameLabel.text = meteorite.name
+        accessibilityLabel = meteorite.name
         yearLabel.text = meteorite.yearTitle
         foundLabel.text = meteorite.fallTitle
         idLabel.text = meteorite.idTitle
+        accessibilityIdentifier = meteorite.idTitle
         
         massLabel.text = meteorite.massTitle
         classLabel.text = meteorite.class
@@ -149,7 +139,7 @@ class MeteoriteListTableViewCell: UITableViewCell {
     private func scaleMeteoriteImage() {
         let imageScale = 0.1 + relativeMass * 0.5
         meteoriteImageView.transform = CGAffineTransform(scaleX: imageScale, y: imageScale)
-        massLabelTrailingConstraint.constant = 40 + 40 * relativeMass
+        massLabelTrailingConstraint.constant = 40 + 55 * relativeMass
     }
     
     private func setBackgroundGradientColors() {
