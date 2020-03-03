@@ -1,7 +1,7 @@
 import UIKit
 
-@IBDesignable
-class GradientView: UIView {
+/// View with a 3 color linear gradient
+@IBDesignable class GradientView: UIView {
     
     @IBInspectable var startColor: UIColor = UIColor.clear {
         didSet {

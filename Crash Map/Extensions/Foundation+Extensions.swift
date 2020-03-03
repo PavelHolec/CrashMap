@@ -35,24 +35,3 @@ extension Collection {
         return indices.contains(index) ? self[index] : nil
     }
 }
-//
-//extension Array where Element: Hashable {
-//    /// Returns di
-//    func difference(from other: [Element]) -> (inserted: [Element], removed: [Element]) {
-//        return self.difference(from: other)
-//
-//
-//        if self.count == 0 {
-//            return (inserted: [], removed: other)
-//        }
-//
-//        if other.count == 0 {
-//            return (inserted: self, removed: [])
-//        }
-//
-//        let thisSet = Set(self)
-//        let otherSet = Set(other)
-//        return (added: Array(thisSet.dif),
-//                removed: Array(thisSet.symmetricDifference(otherSet)))
-//    }
-//}

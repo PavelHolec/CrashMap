@@ -11,6 +11,7 @@ extension MeteoriteDetailViewController: MKMapViewDelegate {
     
         annotationView.canShowCallout = true
         annotationView.image = UIImage(named: "meteorite-stone")
+        view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         return annotationView
     }
 }

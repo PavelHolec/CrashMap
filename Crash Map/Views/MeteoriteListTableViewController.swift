@@ -41,12 +41,14 @@ class MeteoriteListTableViewController: UITableViewController {
         visibleTableViewBounds = tableView.bounds.inset(by: UIEdgeInsets(top: tableHeaderHeight - 50, left: 0, bottom: 0, right: 0))
         
         super.viewDidLoad()
+        
         addSearchController()
         setBaseFilter(toYear: filterSinceYear)
         enablePullToResfresh()
         
         mapView.setRegion(MKCoordinateRegion(MKMapRect.world), animated: true)
         reloadData()
+        refreshMapView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,6 +58,10 @@ class MeteoriteListTableViewController: UITableViewController {
             scrollRowToVisible(at: indexPathForSelectedRow)
             tableView.selectRow(at: indexPathForSelectedRow, animated: true, scrollPosition: .none)
         }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        refreshMapView()
     }
     
     func refresh() {
@@ -127,17 +133,11 @@ class MeteoriteListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let gradientViewTop = tableHeaderView.subviews[1] as! GradientView
-        gradientViewTop.endColor = UIColor.systemBackground.withModified(alphaOffset: -1.0)
-        let gradientViewMiddle = tableHeaderView.subviews[2] as! GradientView
-        gradientViewMiddle.startColor = UIColor.systemBackground.withModified(alphaOffset: -1.0)
-        let gradientViewBottom = tableHeaderView.subviews[4] as! GradientView
-        gradientViewBottom.endColor = UIColor.systemBackground.withModified(alphaOffset: -1.0)
-        return meteorites.count > 0 ? tableHeaderView : nil
+        meteorites.count > 0 ? tableHeaderView : nil
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return meteorites.count > 0 ? tableHeaderHeight : 0
+        meteorites.count > 0 ? tableHeaderHeight : 0
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -146,7 +146,7 @@ class MeteoriteListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return meteorites.count > 0 ? 0 : tableView.bounds.height * 0.6
+        meteorites.count > 0 ? 0 : tableView.bounds.height * 0.6
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -201,5 +201,14 @@ class MeteoriteListTableViewController: UITableViewController {
                 self.refresh()
             }
         }
+    }
+    
+    private func refreshMapView() {
+        let gradientViewTop = tableHeaderView.subviews[1] as! GradientView
+        gradientViewTop.endColor = UIColor.systemBackground.withModified(alphaOffset: -1.0)
+        let gradientViewMiddle = tableHeaderView.subviews[2] as! GradientView
+        gradientViewMiddle.startColor = UIColor.systemBackground.withModified(alphaOffset: -1.0)
+        let gradientViewBottom = tableHeaderView.subviews[4] as! GradientView
+        gradientViewBottom.endColor = UIColor.systemBackground.withModified(alphaOffset: -1.0)
     }
 }

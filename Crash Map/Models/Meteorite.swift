@@ -1,16 +1,5 @@
 import Foundation
 
-struct Coordinates {
-    let lat: Double
-    let lon: Double
-    
-    var isRangeValid: Bool {
-        -90...90 ~= lat &&
-        -180...180 ~= lon &&
-        (lat != 0 && lon != 0)
-    }
-}
-
 struct Meteorite {
     
     enum Fall: String, Codable {
@@ -24,16 +13,6 @@ struct Meteorite {
         case iron = 3
     }
     
-    let name: String
-    let id: String
-    let type: String
-    let `class`: String
-    let kind: Kind
-    let massInGrams: Double
-    let fall: Fall
-    let year: Int?
-    let coordinates: Coordinates?
-    
     struct Json: Decodable {
         let name: String
         let id: String
@@ -46,7 +25,17 @@ struct Meteorite {
         let reclong: String
     }
     
-    // MARK: VM
+    let name: String
+    let id: String
+    let type: String
+    let `class`: String
+    let kind: Kind
+    let massInGrams: Double
+    let fall: Fall
+    let year: Int?
+    let coordinates: Coordinates?
+    
+    // MARK: VM properties
     var idTitle: String {
         "ID \(id)"
     }
