@@ -128,7 +128,7 @@ class MeteoriteListTableViewController: UITableViewController {
             return
         }  
         
-        indexPathForSelectedRow = indexPath
+        setIndexPathForSelectedRow(indexPath)
         mapView.selectAnnotation(annotationToSelect, animated: true)
     }
     
@@ -164,6 +164,10 @@ class MeteoriteListTableViewController: UITableViewController {
         tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
     }
     
+    func setFilteredMeteoritesTo(_ filteredMeteorites: [Meteorite]) {
+        self.filteredMeteorites = filteredMeteorites
+    }
+    
     // MARK: - Segues
     @IBSegueAction func makeMeteoriteDetailViewController(coder: NSCoder) -> UIViewController? {
         let selectedMeteorite = meteorites[tableView.indexPathForSelectedRow!.row]
@@ -171,8 +175,8 @@ class MeteoriteListTableViewController: UITableViewController {
     }
     
     // MARK: - Filtering
-    func setFilteredMeteoritesTo(_ filteredMeteorites: [Meteorite]) {
-        self.filteredMeteorites = filteredMeteorites
+    func setIndexPathForSelectedRow(_ indexPathForSelectedRow: IndexPath) {
+        self.indexPathForSelectedRow = indexPathForSelectedRow
     }
     
     // MARK: - Private

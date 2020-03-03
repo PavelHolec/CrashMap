@@ -20,7 +20,7 @@ extension MeteoriteListTableViewController: MKMapViewDelegate {
             annotationView = MKAnnotationView(annotation: annotation,
                                               reuseIdentifier: reusableAnnotationIdentifier)
             annotationView.canShowCallout = true
-            annotationView.calloutOffset = CGPoint(x: 0, y: 20)
+            annotationView.calloutOffset = CGPoint(x: 0, y: 25)
             
             let button = UIButton(type: .detailDisclosure)
             annotationView.rightCalloutAccessoryView = button
@@ -61,6 +61,7 @@ extension MeteoriteListTableViewController: MKMapViewDelegate {
         
         DispatchQueue.main.async {
             let indexPath = IndexPath(row: selectedIndex, section: 0)
+            self.setIndexPathForSelectedRow(indexPath)
             self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
             self.scrollRowToVisible(at: indexPath)
         }
