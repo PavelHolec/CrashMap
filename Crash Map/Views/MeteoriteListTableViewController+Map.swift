@@ -20,10 +20,23 @@ extension MeteoriteListTableViewController: MKMapViewDelegate {
             annotationView = MKAnnotationView(annotation: annotation,
                                               reuseIdentifier: reusableAnnotationIdentifier)
             annotationView.canShowCallout = true
-            annotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            annotationView.calloutOffset = CGPoint(x: 0, y: 20)
+            
+            let button = UIButton(type: .detailDisclosure)
+            annotationView.rightCalloutAccessoryView = button
             annotationView.image = UIImage(named: "meteorite-stone")
         }
 
+        annotationView.rightCalloutAccessoryView!.isAccessibilityElement = true
+        annotationView.rightCalloutAccessoryView!.accessibilityIdentifier = "callout_\(annotation.id)"
+        annotationView.rightCalloutAccessoryView!.accessibilityLabel = "\(annotation.title!) details"
+        annotationView.rightCalloutAccessoryView!.accessibilityValue = "Tap go to \(annotation.title!) details"
+        
+        annotationView.isAccessibilityElement = true
+        annotationView.accessibilityIdentifier = "pin_\(annotation.id)"
+        annotationView.accessibilityLabel = "\(annotation.title!) Pin"
+        annotationView.accessibilityValue = "Tap pin to show a callout with more information"
+        
         annotationView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         return annotationView
     }

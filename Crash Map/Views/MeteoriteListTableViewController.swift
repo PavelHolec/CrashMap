@@ -210,5 +210,6 @@ class MeteoriteListTableViewController: UITableViewController {
         gradientViewMiddle.startColor = UIColor.systemBackground.withModified(alphaOffset: -1.0)
         let gradientViewBottom = tableHeaderView.subviews[4] as! GradientView
         gradientViewBottom.endColor = UIColor.systemBackground.withModified(alphaOffset: -1.0)
+        tableHeaderView.isAccessibilityElement = false
     }
 }
